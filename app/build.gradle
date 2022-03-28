@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id "org.jetbrains.kotlin.kapt"
+    id 'com.google.gms.google-services'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
 }
@@ -25,10 +26,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -43,8 +46,6 @@ android {
     }
 }
 
-
-
 dependencies {
 
     //App dependencies
@@ -54,6 +55,7 @@ dependencies {
 
     //Database management
     implementation "androidx.room:room-runtime:$room_version"
+    implementation 'com.google.firebase:firebase-common-ktx:20.1.0'
     annotationProcessor "androidx.room:room-compiler:$room_version"
 
     //Navigation
@@ -86,5 +88,9 @@ dependencies {
     //Hilt
     implementation "com.google.dagger:hilt-android:$ext_hilt_version"
     kapt "com.google.dagger:hilt-compiler:$ext_hilt_version"
+
+    //Firebase
+    implementation platform("com.google.firebase:firebase-bom:$firebase_bom")
+    implementation "com.google.firebase:firebase-config-ktx:$firebase_config_ktx"
 
 }
