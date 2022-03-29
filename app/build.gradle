@@ -29,7 +29,14 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildTypes.each {
+        it.buildConfigField 'String', 'WEATHER_API_URL', weatherApiUrl
+        it.buildConfigField 'String', 'WEATHER_API_KEY', WEATHER_API_KEY
+    }
 }
+
+
 
 dependencies {
 
@@ -40,4 +47,18 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    //HTTP API
+    implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit2_version"
+
+    //Architecture Components
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_extensions_version"
+    implementation  "androidx.lifecycle:lifecycle-common-java8:$lifecycle_common_version"
+
+    //Coroutine for Asynchronous programming
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+
+    //Login interceptor
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
 }
