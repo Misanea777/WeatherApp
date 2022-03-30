@@ -3,13 +3,12 @@ package com.endava.internship.mobile.weatherapp.data.model.forecast
 import com.google.gson.annotations.SerializedName
 
 data class Wind(
-
     @field:SerializedName("deg")
-    val deg: Int? = null,
+    val deg: Int?,
 
     @field:SerializedName("speed")
-    val speed: Double? = null,
+    val speed: Double?,
 
     @field:SerializedName("gust")
-    val gust: Double? = null
+    val gust: Double?
 )

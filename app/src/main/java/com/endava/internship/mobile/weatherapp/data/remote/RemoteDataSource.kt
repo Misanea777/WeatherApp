@@ -6,12 +6,8 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
 object RemoteDataSource {
-
-    fun <Api> buildApi(
-        api: Class<Api>,
-    ): Api {
+    fun <Api> buildApi(api: Class<Api>): Api {
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL_RETROFIT_API)
             .client(
@@ -37,5 +33,4 @@ object RemoteDataSource {
             .build()
             .create(api)
     }
-
 }

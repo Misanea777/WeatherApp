@@ -4,34 +4,33 @@ import com.endava.internship.mobile.weatherapp.data.model.*
 import com.google.gson.annotations.SerializedName
 
 data class ListItem(
-
     @field:SerializedName("dt")
-    val dt: Int? = null,
+    val dt: Int?,
 
     @field:SerializedName("pop")
-    val pop: Double? = null,
+    val pop: Double?,
 
     @field:SerializedName("visibility")
-    val visibility: Int? = null,
+    val visibility: Int?,
 
     @field:SerializedName("dt_txt")
-    val dtTxt: String? = null,
+    val dtTxt: String?,
 
     @field:SerializedName("weather")
-    val weather: List<WeatherItem?>? = null,
+    val weather: List<WeatherItem?>?,
 
     @field:SerializedName("main")
-    val main: Main? = null,
+    val main: Main?,
 
     @field:SerializedName("clouds")
-    val clouds: Clouds? = null,
+    val clouds: Clouds?,
 
     @field:SerializedName("sys")
-    val sys: Sys? = null,
+    val sys: Sys?,
 
     @field:SerializedName("wind")
-    val wind: Wind? = null,
+    val wind: Wind?,
 
     @field:SerializedName("rain")
-    val rain: Rain? = null
+    val rain: Rain?
 )

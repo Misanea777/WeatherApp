@@ -2,8 +2,6 @@ package com.endava.internship.mobile.weatherapp.utils
 
 import com.endava.internship.mobile.weatherapp.BuildConfig
 
-
-
 object Constants {
     const val WEATHER_API_QUERY_APP_ID: String = "appid"
     const val WEATHER_API_QUERY_CITY: String = "q"
@@ -12,6 +10,5 @@ object Constants {
     const val WEATHER_API_QUERY_UNITS_METRIC: String = "metric"
     const val WEATHER_API_KEY: String = BuildConfig.WEATHER_API_KEY
     const val BASE_URL_RETROFIT_API: String = BuildConfig.WEATHER_API_URL
-
     const val WEATHER_API_PATH_FORECAST: String = "forecast"
 }
