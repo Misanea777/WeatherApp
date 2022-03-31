@@ -15,8 +15,6 @@ object RemoteDataSource {
                     .addInterceptor {chain ->
                         chain.proceed(chain.request().newBuilder()
                             .url(chain.request().url.newBuilder()
-                                .addQueryParameter(Constants.WEATHER_API_QUERY_CITY, Constants.WEATHER_API_QUERY_CITY_CHISINAU)
-                                .addQueryParameter(Constants.WEATHER_API_QUERY_UNITS, Constants.WEATHER_API_QUERY_UNITS_METRIC)
                                 .addQueryParameter(Constants.WEATHER_API_QUERY_APP_ID, Constants.WEATHER_API_KEY)
                                 .build()
                             )
