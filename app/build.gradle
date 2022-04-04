@@ -31,10 +31,17 @@ android {
         jvmTarget = '1.8'
     }
 
+    buildTypes.each {
+        it.buildConfigField 'String', 'WEATHER_API_URL', weatherApiUrl
+        it.buildConfigField 'String', 'WEATHER_API_KEY', WEATHER_API_KEY
+    }
+
     dataBinding {
         enabled = true
     }
 }
+
+
 
 dependencies {
 
@@ -58,6 +65,8 @@ dependencies {
     //HTTP API
     implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit2_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3_version"
+
 
     //Coroutine for Asynchronous programming
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
