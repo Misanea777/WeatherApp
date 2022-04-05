@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/todayForecastFragment">
+
+    <fragment
+        android:id="@+id/todayForecastFragment"
+        android:name="com.endava.internship.mobile.weatherapp.ui.forecast.TodayForecastFragment"
+        android:label="fragment_today_forecast"
+        tools:layout="@layout/fragment_today_forecast" />
+    <fragment
+        android:id="@+id/weeklyForecastFragment"
+        android:name="com.endava.internship.mobile.weatherapp.ui.forecast.WeeklyForecastFragment"
+        android:label="fragment_weekly_forecast"
+        tools:layout="@layout/fragment_weekly_forecast" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.endava.internship.mobile.weatherapp.ui.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>
