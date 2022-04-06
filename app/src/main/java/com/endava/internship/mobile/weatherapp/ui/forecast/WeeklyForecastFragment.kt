@@ -18,5 +18,4 @@ class WeeklyForecastFragment : Fragment() {
         binding = FragmentWeeklyForecastBinding.inflate(layoutInflater)
         return binding.root
     }
-
 }

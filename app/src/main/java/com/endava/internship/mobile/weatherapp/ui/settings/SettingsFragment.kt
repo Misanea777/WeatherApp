@@ -18,5 +18,4 @@ class SettingsFragment : Fragment() {
         binding = FragmentSettingsBinding.inflate(layoutInflater)
         return binding.root
     }
-
 }

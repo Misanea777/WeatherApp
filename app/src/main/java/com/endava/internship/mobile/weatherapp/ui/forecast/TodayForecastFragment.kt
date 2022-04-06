@@ -18,6 +18,4 @@ class TodayForecastFragment : Fragment() {
         binding = FragmentTodayForecastBinding.inflate(layoutInflater)
         return binding.root
     }
-
-
 }
