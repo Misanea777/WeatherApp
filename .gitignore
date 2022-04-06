@@ -15,8 +15,11 @@ captures/
 .externalNativeBuild
 .cxx/
 
+# Ignore gradle files
+.gradle
+
 .cxx
-.local.properties
+local.properties
 # Google Services (e.g. APIs or Firebase)
 google-services.json
 
