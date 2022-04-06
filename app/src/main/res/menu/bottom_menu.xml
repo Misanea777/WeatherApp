@@ -2,15 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/todayForecastFragment"
+        android:id="@+id/today_forecast_fragment"
         android:icon="@drawable/navigation_home_selector"
         android:title="" />
     <item
-        android:id="@+id/weeklyForecastFragment"
+        android:id="@+id/weekly_forecast_fragment"
         android:icon="@drawable/navigation_calendar_selector"
         android:title="" />
     <item
-        android:id="@+id/settingsFragment"
+        android:id="@+id/settings_fragment"
         android:icon="@drawable/ic_settings"
         android:title="" />
 </menu>

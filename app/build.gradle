@@ -52,7 +52,6 @@ dependencies {
 
     //Database management
     implementation "androidx.room:room-runtime:$room_version"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     annotationProcessor "androidx.room:room-compiler:$room_version"
 
     //Navigation
