@@ -1,13 +1,28 @@
 package com.endava.internship.mobile.weatherapp.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.endava.internship.mobile.weatherapp.R
+import com.endava.internship.mobile.weatherapp.WeatherApp
+import com.endava.internship.mobile.weatherapp.databinding.ActivityMainBinding
+import com.endava.internship.mobile.weatherapp.di.NetworkModule
+
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container_view) as NavHostFragment
+        binding.bottomNavigationView.setupWithNavController(navHostFragment.navController)
+        supportActionBar?.hide()
+
     }
 }
