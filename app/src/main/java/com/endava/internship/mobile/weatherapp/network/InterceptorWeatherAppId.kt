@@ -12,8 +12,8 @@ class InterceptorWeatherAppId : Interceptor {
                 .url(
                     chain.request().url.newBuilder()
                         .addQueryParameter(
-                            name = Constants.WEATHER_API_QUERY_APP_ID,
-                            value = Constants.WEATHER_API_KEY
+                            Constants.WEATHER_API_QUERY_APP_ID,
+                            Constants.WEATHER_API_KEY
                         )
                         .build()
                 )
