@@ -86,5 +86,5 @@ dependencies {
     //Hilt
     implementation "com.google.dagger:hilt-android:$ext_hilt_version"
     kapt "com.google.dagger:hilt-compiler:$ext_hilt_version"
-
+    
 }
