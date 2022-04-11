@@ -1,4 +1,4 @@
-package com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.utils
+package com.endava.internship.mobile.weatherapp.utils
 
 import com.endava.internship.mobile.weatherapp.R
 import java.util.*

@@ -7,4 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="background_blue_day_from">#73B6F4</color>
+    <color name="background_blue_day_to">#99C9F5</color>
+
+    <color name="background_blue_night_from">#07082B</color>
+    <color name="background_blue_night_to">#23268D</color>
+
+    <color name="darkish_blue">#434579</color>
+    <color name="white_partial_transparent">#BFFFFFFF</color>
 </resources>

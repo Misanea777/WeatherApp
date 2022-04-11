@@ -3,12 +3,13 @@ package com.endava.internship.mobile.weatherapp.ui.forecast.weekly
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.endava.internship.mobile.weatherapp.data.model.forecast.Daily
-import com.endava.internship.mobile.weatherapp.databinding.ForecastItemBinding
+import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.ui.forecast.weekly.DayForecast
+import com.endava.internship.mobile.weatherapp.databinding.ItemDailyForecastBinding
 
-class WeeklyForecastRecycleViewAdapter(var dataSet: Array<Daily>) : RecyclerView.Adapter<DayForecastViewHolder>() {
+class WeeklyForecastRecycleViewAdapter(var dataSet: Array<DayForecast>) :
+    RecyclerView.Adapter<DayForecastViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DayForecastViewHolder {
-        val binding = ForecastItemBinding.inflate(
+        val binding = ItemDailyForecastBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -22,7 +23,7 @@ class WeeklyForecastRecycleViewAdapter(var dataSet: Array<Daily>) : RecyclerView
 
     override fun getItemCount() = dataSet.size
 
-    fun updateDataSet(dataSet: Array<Daily>) {
+    fun updateDataSet(dataSet: Array<DayForecast>) {
         this.dataSet = dataSet
         notifyDataSetChanged()
     }

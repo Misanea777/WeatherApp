@@ -1,6 +1,6 @@
 package com.endava.internship.mobile.weatherapp.data.remote
 
-import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.utils.ExcludeList
+import com.endava.internship.mobile.weatherapp.utils.ExcludeList
 import com.endava.internship.mobile.weatherapp.data.model.forecast.ForecastResponse
 import com.endava.internship.mobile.weatherapp.utils.Constants
 import retrofit2.http.GET

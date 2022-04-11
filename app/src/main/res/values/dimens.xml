@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_margin_horizontal">20dp</dimen>
+    <dimen name="card_margin_bottom">20dp</dimen>
+    <dimen name="card_corner_radius">14dp</dimen>
+
+    <dimen name="image_width">106dp</dimen>
+    <dimen name="image_height">96dp</dimen>
+
+    <dimen name="text_size_small">16sp</dimen>
+    <dimen name="text_size_normal">18sp</dimen>
+    <dimen name="text_size_huge">40sp</dimen>
+</resources>

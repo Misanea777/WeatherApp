@@ -1,7 +1,6 @@
 package com.endava.internship.mobile.weatherapp.utils
 
 import com.endava.internship.mobile.weatherapp.BuildConfig
-import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.utils.LatLong
 
 object Constants {
     const val WEATHER_API_QUERY_APP_ID: String = "appid"
@@ -26,4 +25,6 @@ object Constants {
     val LAT_LONG_CHISINAU = LatLong(47.0105, 28.8638)
 
     const val MAX_DAILY_FORECAST_DAYS = 7
+
+    val DAY_HOURS_RANGE = 7..18
 }

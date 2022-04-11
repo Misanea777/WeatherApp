@@ -2,29 +2,28 @@ package com.endava.internship.mobile.weatherapp.ui.forecast.weekly
 
 import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.endava.internship.mobile.weatherapp.R
-import com.endava.internship.mobile.weatherapp.data.model.forecast.Daily
+import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.ui.forecast.weekly.DayForecast
 import com.endava.internship.mobile.weatherapp.databinding.FragmentWeeklyForecastBinding
-import com.endava.internship.mobile.weatherapp.utils.Resource
-import java.time.DayOfWeek
-import java.time.Month
+import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.network.Resource
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class WeeklyForecastFragment : Fragment() {
 
     private lateinit var binding: FragmentWeeklyForecastBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: WeeklyForecastRecycleViewAdapter
     private lateinit var viewManager: RecyclerView.LayoutManager
-
 
     private val viewModel by viewModels<WeeklyForecastViewModel>()
 
@@ -42,23 +41,29 @@ class WeeklyForecastFragment : Fragment() {
 
         viewModel.getForecastForNextFiveDays()
 
-        viewModel.forecast.observe(viewLifecycleOwner, Observer {
-            when(it) {
+        viewModel.forecast.observe(viewLifecycleOwner) { forecast ->
+            binding.progressBar.isVisible = forecast is Resource.Loading
+            when (forecast) {
                 is Resource.Success ->
-                    viewAdapter.updateDataSet(it.value.toTypedArray())
+                    viewAdapter.updateDataSet(forecast.value.map {
+                        DayForecast(it.dt!!, it.temp?.max!!, it.weather?.get(0)?.id!!)
+                    }.toTypedArray())
+                is Resource.Failure -> Toast.makeText(
+                    this.context,
+                    forecast.errorBody.toString(),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
-        })
+        }
 
     }
 
-    fun initRecycleView() {
+    private fun initRecycleView() {
         viewManager = LinearLayoutManager(activity)
-        viewAdapter = WeeklyForecastRecycleViewAdapter(emptyArray<Daily>())
+        viewAdapter = WeeklyForecastRecycleViewAdapter(emptyArray())
         recyclerView = binding.forecastRecycleView.apply {
             layoutManager = viewManager
             adapter = viewAdapter
         }
-
-
     }
 }
