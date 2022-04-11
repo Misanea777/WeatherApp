@@ -1,4 +1,4 @@
-package com.endava.internship.mobile.weatherapp.utils
+package com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.utils
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
