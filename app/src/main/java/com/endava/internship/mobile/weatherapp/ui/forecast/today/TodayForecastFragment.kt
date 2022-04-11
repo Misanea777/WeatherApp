@@ -1,4 +1,4 @@
-package com.endava.internship.mobile.weatherapp.ui.forecast
+package com.endava.internship.mobile.weatherapp.ui.forecast.today
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

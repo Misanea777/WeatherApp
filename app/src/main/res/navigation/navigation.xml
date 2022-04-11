@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/today_forecast_fragment"
-        android:name="com.endava.internship.mobile.weatherapp.ui.forecast.TodayForecastFragment"
+        android:name="com.endava.internship.mobile.weatherapp.ui.forecast.today.TodayForecastFragment"
         android:label="fragment_today_forecast"
         tools:layout="@layout/fragment_today_forecast" />
     <fragment
         android:id="@+id/weekly_forecast_fragment"
-        android:name="com.endava.internship.mobile.weatherapp.ui.forecast.WeeklyForecastFragment"
+        android:name="com.endava.internship.mobile.weatherapp.ui.forecast.weekly.WeeklyForecastFragment"
         android:label="fragment_weekly_forecast"
         tools:layout="@layout/fragment_weekly_forecast" />
     <fragment
