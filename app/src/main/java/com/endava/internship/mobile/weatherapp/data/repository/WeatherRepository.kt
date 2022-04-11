@@ -2,8 +2,8 @@ package com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.wea
 
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.utils.ExcludeList
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.utils.LatLong
-import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.utils.Resource
-import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.utils.SafeApiCall
+import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.network.Resource
+import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.network.SafeApiCall
 import com.endava.internship.mobile.weatherapp.data.model.forecast.Daily
 import com.endava.internship.mobile.weatherapp.data.model.forecast.ForecastResponse
 import com.endava.internship.mobile.weatherapp.data.remote.WeatherApi
