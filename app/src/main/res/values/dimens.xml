@@ -4,5 +4,26 @@
     <dimen name="text_size_small">16sp</dimen>
     <dimen name="text_size_medium">20sp</dimen>
     <dimen name="text_size_big">32sp</dimen>
+    <dimen name="city_text_margin_start">29dp</dimen>
     <dimen name="big_rect_margin_start_end">24dp</dimen>
+    <dimen name="margin_start_date_text">29dp</dimen>
+    <dimen name="sun_image_margin_top">179dp</dimen>
+    <dimen name="temp_text_margin_top">19dp</dimen>
+    <dimen name="hourly_text_margin_top">27dp</dimen>
+    <dimen name="weather_forecast_margin_start">9dp</dimen>
+    <dimen name="weather_forecast_margin_top">17dp</dimen>
+    <dimen name="sun_image_layout_width">300dp</dimen>
+    <dimen name="sun_image_layout_height">236dp</dimen>
+    <dimen name="weather_data_layout_width">329dp</dimen>
+    <dimen name="weather_data_layout_height">91dp</dimen>
+    <dimen name="weather_forecast_layout_width">329dp</dimen>
+    <dimen name="weather_forecast_layout_height">91dp</dimen>
+    <!--dimens for item_hourly_forecast.xml -->
+    <dimen name="item_layout_width">100dp</dimen>
+    <dimen name="item_layout_height">96dp</dimen>
+    <dimen name="cloudy_image_layout_width">50dp</dimen>
+    <dimen name="cloudy_image_layout_height">40dp</dimen>
+    <dimen name="cloudy_image_margin_start">4dp</dimen>
+    <dimen name="cloudy_image_margin_top">11dp</dimen>
+    <dimen name="temp_value_list_end">10dp</dimen>
 </resources>

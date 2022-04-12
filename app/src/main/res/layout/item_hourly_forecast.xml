@@ -6,16 +6,17 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="100dp"
-        android:layout_height="96dp"
+        android:id="@+id/item_hourly"
+        android:layout_width="@dimen/item_layout_width"
+        android:layout_height="@dimen/item_layout_height"
         android:background="@drawable/rectangle_forecast">
 
         <ImageView
             android:id="@+id/cloudy_image"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="11dp"
+            android:layout_width="@dimen/cloudy_image_layout_width"
+            android:layout_height="@dimen/cloudy_image_layout_height"
+            android:layout_marginStart="@dimen/cloudy_image_margin_start"
+            android:layout_marginTop="@dimen/cloudy_image_margin_top"
             android:scaleType="centerCrop"
             android:src="@drawable/cloudy_image"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +26,7 @@
             android:id="@+id/temp_value_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="@dimen/temp_value_list_end"
             android:fontFamily="sans-serif"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_small"

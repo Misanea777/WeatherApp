@@ -13,11 +13,11 @@
             android:id="@+id/city_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="29dp"
+            android:layout_marginStart="@dimen/city_text_margin_start"
             android:layout_marginTop="@dimen/margin_top"
             android:fontFamily="sans-serif-light"
             android:textColor="@color/white"
-            android:textSize="32sp"
+            android:textSize="@dimen/text_size_big"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -56,7 +56,7 @@
             android:id="@+id/date_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="29dp"
+            android:layout_marginStart="@dimen/margin_start_date_text"
             android:fontFamily="sans-serif-light"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_small"
@@ -67,9 +67,9 @@
 
         <ImageView
             android:id="@+id/sun_image"
-            android:layout_width="300dp"
-            android:layout_height="236dp"
-            android:layout_marginTop="179dp"
+            android:layout_width="@dimen/sun_image_layout_width"
+            android:layout_height="@dimen/sun_image_layout_height"
+            android:layout_marginTop="@dimen/sun_image_margin_top"
             android:src="@drawable/sun_with_clouds"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -77,8 +77,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/weather_data"
-            android:layout_width="329dp"
-            android:layout_height="91dp"
+            android:layout_width="@dimen/weather_data_layout_width"
+            android:layout_height="@dimen/weather_data_layout_height"
             android:background="@drawable/rectangle_current_weather"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/big_rect_margin_start_end"
-                android:layout_marginTop="19dp"
+                android:layout_marginTop="@dimen/temp_text_margin_top"
                 android:fontFamily="sans-serif-light"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_small"
@@ -167,7 +167,7 @@
             android:id="@+id/hourly_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="27dp"
+            android:layout_marginTop="@dimen/hourly_text_margin_top"
             android:fontFamily="sans-serif"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_small"
@@ -181,14 +181,13 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/weather_forecast"
-            android:layout_width="100dp"
-            android:layout_height="96dp"
-            android:layout_marginStart="9dp"
-            android:layout_marginTop="17dp"
+            android:layout_width="@dimen/weather_forecast_layout_width"
+            android:layout_height="@dimen/weather_forecast_layout_height"
+            android:layout_marginStart="@dimen/weather_forecast_margin_start"
+            android:layout_marginTop="@dimen/weather_forecast_margin_top"
             android:scrollbars="horizontal"
             app:layout_constraintStart_toStartOf="@id/hourly_text"
-            app:layout_constraintTop_toBottomOf="@+id/hourly_text">
+            app:layout_constraintTop_toBottomOf="@+id/hourly_text" />
 
-        </androidx.recyclerview.widget.RecyclerView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
