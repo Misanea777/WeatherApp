@@ -24,7 +24,9 @@ object Constants {
 
     val LAT_LONG_CHISINAU = LatLong(47.0105, 28.8638)
 
-    const val MAX_DAILY_FORECAST_DAYS = 7
+    const val MAX_DAILY_FORECAST_DAYS = 5
 
     val DAY_HOURS_RANGE = 7..18
+
+    const val DEGREE_CHAR = 0x00B0.toChar()
 }

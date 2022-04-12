@@ -12,7 +12,38 @@ interface WeatherApi {
         @Query(Constants.WEATHER_API_QUERY_LAT) lat: Double,
         @Query(Constants.WEATHER_API_QUERY_LONG) long: Double,
         @Query(Constants.WEATHER_API_QUERY_EXCLUDE, encoded = true) excludeFields: ExcludeList =
-            ExcludeList(listOf(Constants.WEATHER_API_QUERY_FIELD_MINUTELY, Constants.WEATHER_API_QUERY_FIELD_ALERTS)),
+            ExcludeList(emptyList()),
+        @Query(Constants.WEATHER_API_QUERY_UNITS) units: String = Constants.WEATHER_API_QUERY_UNITS_METRIC
+    ): ForecastResponse
+
+    @GET(Constants.WEATHER_API_PATH_ONE_CALL)
+    suspend fun getDailyForecastFromLatLong(
+        @Query(Constants.WEATHER_API_QUERY_LAT) lat: Double,
+        @Query(Constants.WEATHER_API_QUERY_LONG) long: Double,
+        @Query(Constants.WEATHER_API_QUERY_EXCLUDE, encoded = true) excludeFields: ExcludeList =
+            ExcludeList(
+                listOf(
+                    Constants.WEATHER_API_QUERY_FIELD_MINUTELY,
+                    Constants.WEATHER_API_QUERY_FIELD_ALERTS,
+                    Constants.WEATHER_API_QUERY_FIELD_CURRENT,
+                    Constants.WEATHER_API_QUERY_FIELD_HOURLY
+                )
+            ),
+        @Query(Constants.WEATHER_API_QUERY_UNITS) units: String = Constants.WEATHER_API_QUERY_UNITS_METRIC
+    ): ForecastResponse
+
+    @GET(Constants.WEATHER_API_PATH_ONE_CALL)
+    suspend fun getHourlyForecastFromLatLong(
+        @Query(Constants.WEATHER_API_QUERY_LAT) lat: Double,
+        @Query(Constants.WEATHER_API_QUERY_LONG) long: Double,
+        @Query(Constants.WEATHER_API_QUERY_EXCLUDE, encoded = true) excludeFields: ExcludeList =
+            ExcludeList(
+                listOf(
+                    Constants.WEATHER_API_QUERY_FIELD_MINUTELY,
+                    Constants.WEATHER_API_QUERY_FIELD_ALERTS,
+                    Constants.WEATHER_API_QUERY_FIELD_DAILY
+                )
+            ),
         @Query(Constants.WEATHER_API_QUERY_UNITS) units: String = Constants.WEATHER_API_QUERY_UNITS_METRIC
     ): ForecastResponse
 }

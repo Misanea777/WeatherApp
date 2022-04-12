@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.ui.forecast.weekly.DayForecast
 import com.endava.internship.mobile.weatherapp.databinding.FragmentWeeklyForecastBinding
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.network.Resource
+import com.endava.internship.mobile.weatherapp.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,7 +24,6 @@ class WeeklyForecastFragment : Fragment() {
     private lateinit var binding: FragmentWeeklyForecastBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: WeeklyForecastRecycleViewAdapter
-    private lateinit var viewManager: RecyclerView.LayoutManager
 
     private val viewModel by viewModels<WeeklyForecastViewModel>()
 
@@ -39,15 +39,16 @@ class WeeklyForecastFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initRecycleView()
 
-        viewModel.getForecastForNextFiveDays()
+        viewModel.getDailyForecast()
 
         viewModel.forecast.observe(viewLifecycleOwner) { forecast ->
             binding.progressBar.isVisible = forecast is Resource.Loading
             when (forecast) {
                 is Resource.Success ->
-                    viewAdapter.updateDataSet(forecast.value.map {
+
+                    viewAdapter.updateDataSet(forecast.value.daily!!.map {
                         DayForecast(it.dt!!, it.temp?.max!!, it.weather?.get(0)?.id!!)
-                    }.toTypedArray())
+                    }.take(Constants.MAX_DAILY_FORECAST_DAYS+1).drop(1).toTypedArray())
                 is Resource.Failure -> Toast.makeText(
                     this.context,
                     forecast.errorBody.toString(),
@@ -59,10 +60,9 @@ class WeeklyForecastFragment : Fragment() {
     }
 
     private fun initRecycleView() {
-        viewManager = LinearLayoutManager(activity)
         viewAdapter = WeeklyForecastRecycleViewAdapter(emptyArray())
         recyclerView = binding.forecastRecycleView.apply {
-            layoutManager = viewManager
+            layoutManager = LinearLayoutManager(activity)
             adapter = viewAdapter
         }
     }
