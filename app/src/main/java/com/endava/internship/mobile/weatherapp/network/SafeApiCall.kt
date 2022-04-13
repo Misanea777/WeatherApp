@@ -5,8 +5,8 @@ import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 
 suspend fun <T> safeApiCall(
-    apiCall: suspend () -> T,
-    dispatcher: CoroutineDispatcher
+    dispatcher: CoroutineDispatcher,
+    apiCall: suspend () -> T
 ): Resource<T> {
     return withContext(dispatcher) {
         try {
