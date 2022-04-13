@@ -26,4 +26,14 @@ object Constants {
     val LAT_LONG_CHISINAU = LatLong(47.0105, 28.8638)
 
     const val MAX_DAILY_FORECAST_DAYS = 7
+
+    object WeatherConditionCodes {
+        val Thunderstorm = 200..299
+        val  Drizzle = 300..399
+        val Rain = 500..599
+        val Snow = 600..699
+        val Atmosphere = 700..799
+        val Clear = 800
+        val Clouds = 801..Int.MAX_VALUE
+    }
 }
