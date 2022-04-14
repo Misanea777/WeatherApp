@@ -3,6 +3,7 @@ package com.endava.internship.mobile.weatherapp.utils
 import com.endava.internship.mobile.weatherapp.BuildConfig
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.utils.LatLong
 
+
 object Constants {
     const val WEATHER_API_QUERY_APP_ID: String = "appid"
     const val WEATHER_API_QUERY_UNITS: String = "units"
@@ -33,7 +34,9 @@ object Constants {
         val Rain = 500..599
         val Snow = 600..699
         val Atmosphere = 700..799
-        val Clear = 800
+        const val Clear = 800
         val Clouds = 801..Int.MAX_VALUE
     }
+
+    const val MINIMUM_FETCH_INTERVAL : Long = 3600
 }
