@@ -3,21 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/today_forecast_fragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/today_forecast_fragment"
         android:name="com.endava.internship.mobile.weatherapp.ui.forecast.TodayForecastFragment"
-        android:label="fragment_today_forecast"
+        android:label="@string/todayForecastLabel"
         tools:layout="@layout/fragment_today_forecast" />
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.endava.internship.mobile.weatherapp.ui.splashscreen.SplashFragment"
+        android:label="@string/splashScreenLabel"
+        tools:layout="@layout/fragment_splash" >
+
+        <action
+            android:id="@+id/action_splashFragment_to_today_forecast_fragment"
+            app:destination="@id/today_forecast_fragment" />
+    </fragment>
+
+
     <fragment
         android:id="@+id/weekly_forecast_fragment"
         android:name="com.endava.internship.mobile.weatherapp.ui.forecast.WeeklyForecastFragment"
-        android:label="fragment_weekly_forecast"
+        android:label="@string/weeklyForecastLabel"
         tools:layout="@layout/fragment_weekly_forecast" />
     <fragment
         android:id="@+id/settings_fragment"
         android:name="com.endava.internship.mobile.weatherapp.ui.settings.SettingsFragment"
-        android:label="fragment_settings"
+        android:label="@string/settingsFragmentLabel"
         tools:layout="@layout/fragment_settings" />
 </navigation>
