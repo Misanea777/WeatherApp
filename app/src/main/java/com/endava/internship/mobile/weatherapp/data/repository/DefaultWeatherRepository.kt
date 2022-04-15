@@ -5,6 +5,7 @@ import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weat
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.network.safeApiCall
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.utils.ExcludeList
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.utils.LatLong
+import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.utils.exception.NoSuchParameterInResponseException
 import com.endava.internship.mobile.weatherapp.data.model.forecast.Daily
 import com.endava.internship.mobile.weatherapp.data.model.forecast.ForecastResponse
 import com.endava.internship.mobile.weatherapp.data.remote.WeatherApi
@@ -33,7 +34,7 @@ class DefaultWeatherRepository @Inject constructor(
                         Constants.WEATHER_API_QUERY_FIELD_HOURLY
                     )
                 ),
-            ).daily!!.take(days + 1).drop(1)
+            ).daily?.take(days+1)?.drop(1) ?: throw  NoSuchParameterInResponseException()
         }
 
     override suspend fun getHourlyForecastFromLatLong(latLong: LatLong): Resource<ForecastResponse> =
