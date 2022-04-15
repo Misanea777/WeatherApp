@@ -18,19 +18,17 @@
             android:layout_marginStart="@dimen/cloudy_image_margin_start"
             android:layout_marginTop="@dimen/cloudy_image_margin_top"
             android:scaleType="centerCrop"
-            android:src="@drawable/cloudy_image"
+            android:src="@drawable/ic_sunny"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/temp_value_list"
+            style="@style/MyTextViewStyle.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/temp_value_list_end"
-            android:fontFamily="sans-serif"
-            android:textColor="@color/white"
             android:textSize="@dimen/text_size_small"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cloudy_image"
             tools:text="24°" />

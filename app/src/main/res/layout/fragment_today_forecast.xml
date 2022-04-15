@@ -3,6 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+    <data>
+        <variable
+            name="viewTodayModel"
+            type="com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.viewmodels.TodayForecastViewModel" />
+
+        <variable
+            name="todayFragment"
+            type="com.endava.internship.mobile.weatherapp.ui.forecast.TodayForecastFragment" />
+    </data>
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -11,66 +23,49 @@
 
         <TextView
             android:id="@+id/city_text"
+            style="@style/MyTextViewStyle.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/city_text_margin_start"
             android:layout_marginTop="@dimen/margin_top"
-            android:fontFamily="sans-serif-light"
-            android:textColor="@color/white"
+            android:text="@{viewTodayModel.defaultCityName()}"
             android:textSize="@dimen/text_size_big"
-            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Chisinau" />
 
-
         <TextView
             android:id="@+id/time_hour"
+            style="@style/MyTextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="101dp"
             android:layout_marginTop="@dimen/margin_top"
-            android:fontFamily="sans-serif-light"
-            android:textColor="@color/white"
+            android:text="@{todayFragment.setSpannedTime(viewTodayModel.currentTime)}"
             android:textSize="@dimen/text_size_big"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/city_text"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="12:" />
-
-        <TextView
-            android:id="@+id/time_minutes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size_big"
-            app:layout_constraintStart_toEndOf="@id/time_hour"
-            app:layout_constraintTop_toTopOf="@id/time_hour"
-            tools:text="00"
-
-            />
+            tools:text="12:00" />
 
         <TextView
             android:id="@+id/date_text"
+            style="@style/MyTextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_start_date_text"
-            android:fontFamily="sans-serif-light"
-            android:textColor="@color/white"
+            android:text="@{viewTodayModel.currentDate}"
             android:textSize="@dimen/text_size_small"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/city_text"
             tools:text="Monday, September 13" />
-
 
         <ImageView
             android:id="@+id/sun_image"
             android:layout_width="@dimen/sun_image_layout_width"
             android:layout_height="@dimen/sun_image_layout_height"
             android:layout_marginTop="@dimen/sun_image_margin_top"
-            android:src="@drawable/sun_with_clouds"
+            android:src="@drawable/ic_sunny"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -86,12 +81,11 @@
 
             <TextView
                 android:id="@+id/temp_text"
+                style="@style/MyTextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/big_rect_margin_start_end"
                 android:layout_marginTop="@dimen/temp_text_margin_top"
-                android:fontFamily="sans-serif-light"
-                android:textColor="@color/white"
                 android:textSize="@dimen/text_size_small"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -99,13 +93,10 @@
 
             <TextView
                 android:id="@+id/temp_value"
+                style="@style/MyTextViewStyle.Bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:fontFamily="sans-serif"
-                android:textColor="@color/white"
                 android:textSize="@dimen/text_size_medium"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/temp_text"
                 app:layout_constraintStart_toStartOf="@id/temp_text"
                 app:layout_constraintTop_toBottomOf="@id/temp_text"
@@ -113,10 +104,9 @@
 
             <TextView
                 android:id="@+id/wind_text"
+                style="@style/MyTextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
-                android:textColor="@color/white"
                 android:textSize="@dimen/text_size_small"
                 app:layout_constraintEnd_toStartOf="@+id/humidity_text"
                 app:layout_constraintStart_toEndOf="@+id/temp_text"
@@ -125,12 +115,10 @@
 
             <TextView
                 android:id="@+id/wind_value"
+                style="@style/MyTextViewStyle.Bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:textColor="@color/white"
                 android:textSize="@dimen/text_size_medium"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@id/wind_text"
                 app:layout_constraintStart_toStartOf="@+id/wind_text"
                 app:layout_constraintTop_toBottomOf="@id/wind_text"
@@ -138,11 +126,10 @@
 
             <TextView
                 android:id="@+id/humidity_text"
+                style="@style/MyTextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/big_rect_margin_start_end"
-                android:fontFamily="sans-serif-light"
-                android:textColor="@color/white"
                 android:textSize="@dimen/text_size_small"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/wind_text"
@@ -150,12 +137,10 @@
 
             <TextView
                 android:id="@+id/humidity_value"
+                style="@style/MyTextViewStyle.Bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:textColor="@color/white"
                 android:textSize="@dimen/text_size_medium"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/humidity_text"
                 app:layout_constraintStart_toStartOf="@+id/humidity_text"
                 app:layout_constraintTop_toBottomOf="@+id/humidity_text"
@@ -165,13 +150,11 @@
 
         <TextView
             android:id="@+id/hourly_text"
+            style="@style/MyTextViewStyle.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/hourly_text_margin_top"
-            android:fontFamily="sans-serif"
-            android:textColor="@color/white"
             android:textSize="@dimen/text_size_small"
-            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/weather_forecast"
             app:layout_constraintStart_toStartOf="@+id/weather_data"
             app:layout_constraintTop_toBottomOf="@+id/weather_data"
