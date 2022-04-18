@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.data.repository.WeatherRepository
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.network.Resource
-import com.endava.internship.mobile.weatherapp.data.model.forecast.ForecastResponse
+import com.endava.internship.mobile.weatherapp.data.model.forecast.Daily
 import com.endava.internship.mobile.weatherapp.utils.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -16,11 +16,14 @@ import javax.inject.Inject
 class WeeklyForecastViewModel @Inject constructor(
     private val repository: WeatherRepository
 ) : ViewModel() {
-    private val _forecast: MutableLiveData<Resource<ForecastResponse>> = MutableLiveData()
-    val forecast: LiveData<Resource<ForecastResponse>> = _forecast
+    private val _forecast: MutableLiveData<Resource<List<Daily>>> = MutableLiveData()
+    val forecast: LiveData<Resource<List<Daily>>> = _forecast
 
     fun getDailyForecast() = viewModelScope.launch {
         _forecast.value = Resource.Loading
-        _forecast.value = repository.getDailyForecastFromLatLong(Constants.LAT_LONG_CHISINAU)
+        _forecast.value = repository.getDailyForecastFromLatLong(
+            Constants.LAT_LONG_CHISINAU,
+            Constants.EXPECTED_DAILY_FORECAST_DAYS
+        )
     }
 }

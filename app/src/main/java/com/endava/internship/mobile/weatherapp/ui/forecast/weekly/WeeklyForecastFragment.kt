@@ -46,7 +46,7 @@ class WeeklyForecastFragment : Fragment() {
             when (forecast) {
                 is Resource.Success ->
 
-                    viewAdapter.updateDataSet(forecast.value.daily!!.map {
+                    viewAdapter.updateDataSet(forecast.value.map {
                         DayForecast(it.dt!!, it.temp?.max!!, it.weather?.get(0)?.id!!)
                     }.take(Constants.MAX_DAILY_FORECAST_DAYS+1).drop(1).toTypedArray())
                 is Resource.Failure -> Toast.makeText(

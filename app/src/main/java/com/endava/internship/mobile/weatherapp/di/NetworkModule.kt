@@ -1,6 +1,9 @@
 package com.endava.internship.mobile.weatherapp.di
 
 import com.endava.internship.mobile.weatherapp.BuildConfig
+import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.data.repository.DefaultWeatherRepository
+import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.data.repository.WeatherRepository
+import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.di.dispatchers.IoDispatcher
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.network.InterceptorWeatherAppId
 import com.endava.internship.mobile.weatherapp.data.remote.WeatherApi
 import com.endava.internship.mobile.weatherapp.utils.Constants
@@ -10,12 +13,12 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineDispatcher
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
-
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -58,4 +61,8 @@ class NetworkModule {
     fun httpLoggingInterceptor(): HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
         setLevel(HttpLoggingInterceptor.Level.BASIC)
     }
+
+    @Singleton
+    @Provides
+    fun provideDefaultWeatherRepository(api: WeatherApi, @IoDispatcher ioDispatcher: CoroutineDispatcher): WeatherRepository = DefaultWeatherRepository(api, ioDispatcher);
 }
