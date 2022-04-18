@@ -4,4 +4,11 @@
     <string name="calendar">calendar</string>
     <string name="home">home</string>
     <string name="settings">settings</string>
+    <string name="hourly_forecast">Hourly forecast</string>
+    <string name="wind">Wind</string>
+    <string name="temp">Temp</string>
+    <string name="humidity">Humidity</string>
+    <string name="temp_value">%s°</string>
+    <string name="wind_value">%skm/h</string>
+    <string name="humidity_value">%s</string>
 </resources>

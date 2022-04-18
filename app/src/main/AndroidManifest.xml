@@ -3,7 +3,8 @@
     package="com.endava.internship.mobile.weatherapp">
     
     <uses-permission android:name="android.permission.INTERNET"/>
-    
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:name=".WeatherApp"
         android:allowBackup="true"

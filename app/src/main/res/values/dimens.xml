@@ -9,15 +9,15 @@
     <dimen name="margin_start_date_text">29dp</dimen>
     <dimen name="sun_image_margin_top">179dp</dimen>
     <dimen name="temp_text_margin_top">19dp</dimen>
-    <dimen name="hourly_text_margin_top">27dp</dimen>
+    <dimen name="hourly_text_margin_top">15dp</dimen>
     <dimen name="weather_forecast_margin_start">9dp</dimen>
-    <dimen name="weather_forecast_margin_top">17dp</dimen>
+    <dimen name="weather_forecast_margin_top">12dp</dimen>
     <dimen name="sun_image_layout_width">300dp</dimen>
     <dimen name="sun_image_layout_height">236dp</dimen>
     <dimen name="weather_data_layout_width">329dp</dimen>
     <dimen name="weather_data_layout_height">91dp</dimen>
-    <dimen name="weather_forecast_layout_width">329dp</dimen>
-    <dimen name="weather_forecast_layout_height">91dp</dimen>
+    <dimen name="weather_forecast_layout_width">330dp</dimen>
+    <dimen name="weather_forecast_layout_height">100dp</dimen>
     <!--dimens for item_hourly_forecast.xml -->
     <dimen name="item_layout_width">100dp</dimen>
     <dimen name="item_layout_height">96dp</dimen>

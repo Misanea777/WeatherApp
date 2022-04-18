@@ -2,14 +2,20 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    tools:context=".ui."
+    android:layout_width="@dimen/item_layout_width"
+    android:layout_height="@dimen/item_layout_height"
+    app:cardBackgroundColor="@android:color/transparent"
+    app:cardElevation="0dp"
+    android:layout_marginEnd="5dp"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item_hourly"
-        android:layout_width="@dimen/item_layout_width"
-        android:layout_height="@dimen/item_layout_height"
-        android:background="@drawable/rectangle_forecast">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rectangle_forecast"
+        >
 
         <ImageView
             android:id="@+id/cloudy_image"
@@ -34,7 +40,7 @@
             tools:text="24°" />
 
         <TextView
-            android:id="@+id/temp_text_list"
+            android:id="@+id/hour_text_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"

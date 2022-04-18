@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/city_text_margin_start"
             android:layout_marginTop="@dimen/margin_top"
-            android:text="@{viewTodayModel.defaultCityName()}"
+            android:text="@{viewTodayModel.currentCity}"
             android:textSize="@dimen/text_size_big"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_start_date_text"
-            android:text="@{viewTodayModel.currentDate}"
+            android:text="@{viewTodayModel.localDate}"
             android:textSize="@dimen/text_size_small"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/city_text"
@@ -82,6 +82,7 @@
             <TextView
                 android:id="@+id/temp_text"
                 style="@style/MyTextViewStyle"
+                android:text="@string/temp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/big_rect_margin_start_end"
@@ -93,6 +94,7 @@
 
             <TextView
                 android:id="@+id/temp_value"
+                android:text="@string/temp_value"
                 style="@style/MyTextViewStyle.Bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -104,6 +106,7 @@
 
             <TextView
                 android:id="@+id/wind_text"
+                android:text="@string/wind"
                 style="@style/MyTextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -115,6 +118,7 @@
 
             <TextView
                 android:id="@+id/wind_value"
+                android:text="@string/wind_value"
                 style="@style/MyTextViewStyle.Bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -126,6 +130,7 @@
 
             <TextView
                 android:id="@+id/humidity_text"
+                android:text="@string/humidity"
                 style="@style/MyTextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -137,6 +142,7 @@
 
             <TextView
                 android:id="@+id/humidity_value"
+                android:text="@string/humidity_value"
                 style="@style/MyTextViewStyle.Bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -155,15 +161,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/hourly_text_margin_top"
             android:textSize="@dimen/text_size_small"
-            app:layout_constraintBottom_toTopOf="@id/weather_forecast"
+            app:layout_constraintBottom_toTopOf="@id/weather_forecast_recycler_view"
             app:layout_constraintStart_toStartOf="@+id/weather_data"
             app:layout_constraintTop_toBottomOf="@+id/weather_data"
+            android:text="@string/hourly_forecast"
             tools:text="Hourly forecast">
 
         </TextView>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/weather_forecast"
+            android:id="@+id/weather_forecast_recycler_view"
             android:layout_width="@dimen/weather_forecast_layout_width"
             android:layout_height="@dimen/weather_forecast_layout_height"
             android:layout_marginStart="@dimen/weather_forecast_margin_start"

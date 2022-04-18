@@ -3,68 +3,55 @@ package com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.wea
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.data.repository.WeatherRepository
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.network.Resource
-import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.utils.LatLong
+import com.endava.internship.mobile.weatherapp.data.model.forecast.Current
 import com.endava.internship.mobile.weatherapp.data.model.forecast.Daily
 import com.endava.internship.mobile.weatherapp.data.model.forecast.ForecastResponse
-import com.endava.internship.mobile.weatherapp.data.remote.WeatherApi
+import com.endava.internship.mobile.weatherapp.data.model.forecast.Hourly
+import com.endava.internship.mobile.weatherapp.utils.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.text.DateFormat
-import java.text.SimpleDateFormat
-import java.util.*
+import kotlinx.coroutines.launch
+import org.joda.time.DateTime
 import javax.inject.Inject
 
 @HiltViewModel
 class TodayForecastViewModel @Inject constructor(
-        private var weatherApi: WeatherApi
-    ): ViewModel() {
+    private var weatherRepository: WeatherRepository,
+    private var time: DateTime
+) : ViewModel() {
 
-    private val _currentCity = MutableLiveData<String>()
-    var currentCity: LiveData<String> = _currentCity
+    var currentCity: String = defaultCityName()
 
-    val currentTime: String = setTime()
+    val currentTime: String = getTime()
 
-    val localDate: String = setCurrentDate()
+    val localDate: String = getDate()
 
-    private val _currentWeather = MutableLiveData<ForecastResponse>()
-    val currentWeather: LiveData<ForecastResponse> = _currentWeather
+    private val _hourlyWeather = MutableLiveData<Resource<ForecastResponse>>()
+    val hourlyWeather: LiveData<Resource<ForecastResponse>> = _hourlyWeather
 
-    private suspend fun setForecastWeather() {
-        _currentWeather.value = weatherApi.getWeatherDataFromLatLong(47.0105,28.8638)
+    private val _currentWeather = MutableLiveData<Resource<Current>>()
+    val currentWeather: LiveData<Resource<Current>> = _currentWeather
+
+    fun getCurrentWeather() = viewModelScope.launch {
+        _currentWeather.value = Resource.Loading
+        _currentWeather.value = weatherRepository.getCurrentForecast((Constants.LAT_LONG_CHISINAU))
     }
 
-    // default local city is Chisinau
-    private suspend fun setCityName() {
-        //weatherRepository.getDailyForecast(LatLong(47.0105, 28.8638),1)
+    fun getHourlyWeather() = viewModelScope.launch {
+        _hourlyWeather.value = Resource.Loading
+        _hourlyWeather.value = weatherRepository.getHourlyForecast((Constants.LAT_LONG_CHISINAU))
     }
 
-    private fun setTime(): String {
-        val localTime = Calendar.getInstance()
-        val formattedTime = SimpleDateFormat("h:mm", Locale.getDefault())
-        return formattedTime.format(localTime.time)
+    private fun defaultCityName(): String {
+        return "Chisinau"
     }
 
-    private fun setCurrentDate(): String {
-        val localDate = Calendar.getInstance().time
-        val formattedDate = DateFormat.getDateInstance(DateFormat.FULL).format(localDate)
-        val splitDate = formattedDate.split(",")
-        return splitDate[0] + "," + splitDate[1]
-    }
+    private fun getTime(): String = time.toString("hh:mm")
 
-    private fun setCurrentHourForecast() {
-
-    }
-
-    private fun setCurrentWeatherIcon() {
-
-    }
-
-    private fun setCurrentForecastData() {
-
-    }
-
-    private fun setDataInRecyclerView() {
-
-    }
+    private fun getDate(): String =
+        time.dayOfWeek().asText + ", " +
+                time.monthOfYear().asText + " " +
+                time.dayOfMonth.toString()
 }
