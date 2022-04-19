@@ -30,7 +30,7 @@ class DefaultWeatherRepository(
                         Constants.WEATHER_API_QUERY_FIELD_HOURLY
                     )
                 ),
-            ).daily?.take(days+1)?.drop(1) ?: throw  NoSuchParameterInResponseException()
+            ).daily?.take(days)?.drop(1) ?: throw  NoSuchParameterInResponseException()
         }
 
     override suspend fun getHourlyForecastFromLatLong(latLong: LatLong): Resource<ForecastResponse> =

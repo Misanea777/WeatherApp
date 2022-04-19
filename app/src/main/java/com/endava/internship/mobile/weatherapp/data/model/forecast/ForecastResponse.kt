@@ -6,11 +6,11 @@ data class ForecastResponse(
     val current: Current?,
     val daily: List<Daily>?,
     val hourly: List<Hourly>?,
-    val lat: Double?,
-    val lon: Double?,
+    val lat: Double,
+    val lon: Double,
     val minutely: List<Minutely>?,
-    val timezone: String?,
+    val timezone: String,
 
     @field:SerializedName("timezone_offset")
-    val timezoneOffset: Int?
+    val timezoneOffset: Int
 )

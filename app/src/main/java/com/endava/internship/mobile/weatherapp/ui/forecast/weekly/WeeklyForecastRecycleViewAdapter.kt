@@ -17,6 +17,7 @@ class WeeklyForecastRecycleViewAdapter(var dataSet: Array<DayForecast>) :
         return DayForecastViewHolder(binding)
     }
 
+
     override fun onBindViewHolder(holder: DayForecastViewHolder, position: Int) {
         holder.bind(dataSet[position])
     }

@@ -1,21 +1,15 @@
 package com.endava.internship.mobile.weatherapp.ui.forecast.weekly
 
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.ui.forecast.weekly.DayForecast
 import com.endava.internship.mobile.weatherapp.databinding.FragmentWeeklyForecastBinding
-import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.network.Resource
-import com.endava.internship.mobile.weatherapp.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,28 +29,18 @@ class WeeklyForecastFragment : Fragment() {
         return binding.root
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initRecycleView()
 
         viewModel.getDailyForecast()
 
         viewModel.forecast.observe(viewLifecycleOwner) { forecast ->
-            binding.progressBar.isVisible = forecast is Resource.Loading
-            when (forecast) {
-                is Resource.Success ->
-
-                    viewAdapter.updateDataSet(forecast.value.map {
-                        DayForecast(it.dt!!, it.temp?.max!!, it.weather?.get(0)?.id!!)
-                    }.take(Constants.MAX_DAILY_FORECAST_DAYS+1).drop(1).toTypedArray())
-                is Resource.Failure -> Toast.makeText(
-                    this.context,
-                    forecast.errorBody.toString(),
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+            viewAdapter.updateDataSet(forecast.toTypedArray())
         }
 
+        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            binding.progressBar.isVisible = isLoading
+        }
     }
 
     private fun initRecycleView() {
