@@ -30,7 +30,7 @@
 
         <TextView
             android:id="@+id/temp_value_list"
-            style="@style/MyTextViewStyle.Bold"
+            style="@style/TextViewStyleByWeatherDesign.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/temp_value_list_end"

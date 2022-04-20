@@ -17,12 +17,12 @@
 
     </style>
     <!-- Default styles for TextView -->
-    <style name="MyTextViewStyle" parent="TextAppearance.AppCompat">
+    <style name="TextViewStyleByWeatherDesign" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">sans-serif</item>
     </style>
 
-    <style name="MyTextViewStyle.Bold">
+    <style name="TextViewStyleByWeatherDesign.Bold">
         <item name="android:textStyle">bold</item>
     </style>
 

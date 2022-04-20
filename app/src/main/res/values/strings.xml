@@ -10,5 +10,5 @@
     <string name="humidity">Humidity</string>
     <string name="temp_value">%s°</string>
     <string name="wind_value">%skm/h</string>
-    <string name="humidity_value">%s</string>
+    <string name="humidity_value">%s%%</string>
 </resources>

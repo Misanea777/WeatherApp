@@ -23,7 +23,7 @@
 
         <TextView
             android:id="@+id/city_text"
-            style="@style/MyTextViewStyle.Bold"
+            style="@style/TextViewStyleByWeatherDesign.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/city_text_margin_start"
@@ -36,7 +36,7 @@
 
         <TextView
             android:id="@+id/time_hour"
-            style="@style/MyTextViewStyle"
+            style="@style/TextViewStyleByWeatherDesign"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="101dp"
@@ -50,7 +50,7 @@
 
         <TextView
             android:id="@+id/date_text"
-            style="@style/MyTextViewStyle"
+            style="@style/TextViewStyleByWeatherDesign"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_start_date_text"
@@ -59,6 +59,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/city_text"
             tools:text="Monday, September 13" />
+
+
+        <!-- todayFragment.getCurrentIcon() -->
 
         <ImageView
             android:id="@+id/sun_image"
@@ -81,7 +84,7 @@
 
             <TextView
                 android:id="@+id/temp_text"
-                style="@style/MyTextViewStyle"
+                style="@style/TextViewStyleByWeatherDesign"
                 android:text="@string/temp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -92,10 +95,11 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Temp" />
 
+            <!-- todayFragment.getCurrentTemp() -->
             <TextView
                 android:id="@+id/temp_value"
-                android:text="@string/temp_value"
-                style="@style/MyTextViewStyle.Bold"
+                android:text="@{@string/temp_value(viewTodayModel.currentTemp)}"
+                style="@style/TextViewStyleByWeatherDesign.Bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_medium"
@@ -107,7 +111,7 @@
             <TextView
                 android:id="@+id/wind_text"
                 android:text="@string/wind"
-                style="@style/MyTextViewStyle"
+                style="@style/TextViewStyleByWeatherDesign"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_small"
@@ -116,10 +120,12 @@
                 app:layout_constraintTop_toTopOf="@id/temp_text"
                 tools:text="Wind" />
 
+
+            <!-- todayFragment.getCurrentWind() -->
             <TextView
                 android:id="@+id/wind_value"
-                android:text="@string/wind_value"
-                style="@style/MyTextViewStyle.Bold"
+                android:text="@{@string/wind_value(viewTodayModel.currentWindSpeed)}"
+                style="@style/TextViewStyleByWeatherDesign.Bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_medium"
@@ -131,7 +137,7 @@
             <TextView
                 android:id="@+id/humidity_text"
                 android:text="@string/humidity"
-                style="@style/MyTextViewStyle"
+                style="@style/TextViewStyleByWeatherDesign"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/big_rect_margin_start_end"
@@ -140,10 +146,12 @@
                 app:layout_constraintTop_toTopOf="@id/wind_text"
                 tools:text="Humidity" />
 
+
+            <!-- todayFragment.getCurrentHumidity() -->
             <TextView
                 android:id="@+id/humidity_value"
-                android:text="@string/humidity_value"
-                style="@style/MyTextViewStyle.Bold"
+                android:text="@{@string/humidity_value(viewTodayModel.currentHumidity)}"
+                style="@style/TextViewStyleByWeatherDesign.Bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_medium"
@@ -156,7 +164,7 @@
 
         <TextView
             android:id="@+id/hourly_text"
-            style="@style/MyTextViewStyle.Bold"
+            style="@style/TextViewStyleByWeatherDesign.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/hourly_text_margin_top"

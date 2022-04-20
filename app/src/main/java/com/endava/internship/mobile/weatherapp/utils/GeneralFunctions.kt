@@ -5,7 +5,7 @@ import java.util.*
 
 fun itemsString(items: List<String>) = items.joinToString(separator = ",")
 
-fun weatherIDToResourceID(id: Int): Int {
+fun weatherIDToResourceID(id: Int?): Int {
     return when(id) {
         in 200..299 -> R.drawable.ic_thunder
         in 300..399 -> R.drawable.ic_shower

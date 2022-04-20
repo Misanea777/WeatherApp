@@ -45,7 +45,7 @@ class WeatherRepository @Inject constructor(
         )
     }
 
-    suspend fun getCurrentForecast(latLong: LatLong): Resource<Current> = safeApiCall {
+    suspend fun getCurrentForecast(latLong: LatLong): Resource<ForecastResponse> = safeApiCall {
         api.getWeatherDataFromLatLong(
             lat = latLong.lat, long = latLong.long,
             excludeFields = ExcludeList(
@@ -55,6 +55,6 @@ class WeatherRepository @Inject constructor(
                     Constants.WEATHER_API_QUERY_FIELD_DAILY
                 )
             ),
-        ).current!!
+        )
     }
 }

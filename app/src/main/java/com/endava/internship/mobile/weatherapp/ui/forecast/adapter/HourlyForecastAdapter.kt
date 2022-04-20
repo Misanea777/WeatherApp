@@ -13,7 +13,7 @@ import com.endava.internship.mobile.weatherapp.utils.Constants
 import kotlin.math.roundToInt
 
 class HourlyForecastAdapter(
-    private val hourlyWeather: List<Hourly>
+    private val hourlyWeather: List<Hourly>?
 ) : RecyclerView.Adapter<HourlyForecastAdapter.HourlyForecastHolder>() {
 
     class HourlyForecastHolder(private val view: View) : RecyclerView.ViewHolder(view) {
@@ -21,7 +21,7 @@ class HourlyForecastAdapter(
         val tempValue: TextView = view.findViewById(R.id.temp_value_list)
         val hourText: TextView = view.findViewById(R.id.hour_text_list)
 
-        fun bindHourlyDataView(hourlyWeather: Hourly) = hourlyWeather.weather?.map { weatherIDToResourceID(it.id!!) }
+        fun bindHourlyDataView(hourlyWeather: Hourly?) = hourlyWeather?.weather?.map { weatherIDToResourceID(it.id) }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HourlyForecastHolder {
@@ -33,10 +33,10 @@ class HourlyForecastAdapter(
 
     override fun onBindViewHolder(holder: HourlyForecastHolder, position: Int) {
 
-        val item = hourlyWeather[position]
-        holder.tempValue.text = item.temp?.roundToInt().toString() + "°"
+        val item = hourlyWeather?.get(position)
+        holder.tempValue.text = item?.temp?.roundToInt().toString() + "°"
         holder.hourText.text = "12:00"
-        holder.cloudyImage.setImageResource(holder.bindHourlyDataView(item)?.get(0)!!)
+        holder.cloudyImage.setImageResource(holder.bindHourlyDataView(item)?.get(0) ?: 0)
     }
 
     override fun getItemCount(): Int = Constants.MAX_DAILY_FORECAST_DAYS

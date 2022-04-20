@@ -5,22 +5,26 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.StyleSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.endava.internship.mobile.weatherapp.R
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.network.Resource
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.ui.forecast.adapter.HourlyForecastAdapter
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.utils.weatherIDToResourceID
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.viewmodels.TodayForecastViewModel
-import com.endava.internship.mobile.weatherapp.data.model.forecast.Current
+import com.endava.internship.mobile.weatherapp.data.model.forecast.ForecastResponse
 import com.endava.internship.mobile.weatherapp.data.model.forecast.Hourly
-import com.endava.internship.mobile.weatherapp.data.model.forecast.Temp
 import com.endava.internship.mobile.weatherapp.databinding.FragmentTodayForecastBinding
+import com.endava.internship.mobile.weatherapp.utils.Constants
+import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
 class TodayForecastFragment : Fragment() {
@@ -48,58 +52,20 @@ class TodayForecastFragment : Fragment() {
 
             todayFragment = this@TodayForecastFragment
         }
-        showCurrentWeather()
 
-        sharedTodayViewModel.getHourlyWeather()
-        sharedTodayViewModel.hourlyWeather.observe(viewLifecycleOwner) {
-            if (it is Resource.Success) initHourlyAdapter(it.value.hourly!!)
-            else Toast.makeText(
-                this.requireContext(),
-                "current weather doesn't exist",
-                Toast.LENGTH_SHORT
-            ).show()
+        sharedTodayViewModel.apply {
+            getCurrentWeather()
+            getHourlyWeather()
+            hourlyData.observe(viewLifecycleOwner) {
+                initHourlyAdapter(sharedTodayViewModel.hourlyData.value)
+            }
         }
     }
 
-    private fun initHourlyAdapter(hourlyData: List<Hourly>) {
+    private fun initHourlyAdapter(hourlyData: List<Hourly>?) {
         binding.weatherForecastRecyclerView.apply {
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
             adapter = HourlyForecastAdapter(hourlyData)
-        }
-    }
-
-    private fun weatherCurrentToast() =
-        Toast.makeText(requireContext(), "Error bindCurrentData", Toast.LENGTH_SHORT).show()
-
-    private fun bindCurrentData(resource: Resource.Success<Current>) {
-        setTemp(resource.value.temp?.roundToInt().toString())
-        setWind(resource.value.wind_speed?.roundToInt().toString())
-        setHumidity(resource.value.humidity.toString())
-        resource.value.weather?.map { setWeatherIcon(weatherIDToResourceID(it.id!!)) }
-    }
-
-    private fun setTemp(temp: String) {
-        binding.tempValue.text = context?.getString(R.string.temp_value, temp)
-    }
-
-    private fun setWind(wind: String) {
-        binding.windValue.text = context?.getString(R.string.wind_value, wind)
-    }
-
-    private fun setHumidity(humidityValue: String) {
-        binding.humidityValue.text = context?.getString(R.string.humidity_value, humidityValue + "%")
-    }
-
-    private fun setWeatherIcon(idIcon: Int) {
-        binding.sunImage.setImageResource(weatherIDToResourceID(idIcon))
-    }
-
-    private fun showCurrentWeather() {
-        sharedTodayViewModel.apply {
-            getCurrentWeather()
-            currentWeather.observe(viewLifecycleOwner) {
-                if (it is Resource.Success) bindCurrentData(it) else weatherCurrentToast()
-            }
         }
     }
 

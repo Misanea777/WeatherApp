@@ -26,4 +26,6 @@ object Constants {
     val LAT_LONG_CHISINAU = LatLong(47.0105, 28.8638)
 
     const val MAX_DAILY_FORECAST_DAYS = 7
+
+    const val DEFAULT_CITY = "Chisinau"
 }
