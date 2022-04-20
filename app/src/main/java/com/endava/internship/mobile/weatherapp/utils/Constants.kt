@@ -1,7 +1,6 @@
 package com.endava.internship.mobile.weatherapp.utils
 
 import com.endava.internship.mobile.weatherapp.BuildConfig
-import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.utils.LatLong
 
 
 object Constants {
@@ -26,7 +25,12 @@ object Constants {
 
     val LAT_LONG_CHISINAU = LatLong(47.0105, 28.8638)
 
+    val DAY_HOURS_RANGE = 7..18
+
+    const val DEGREE_CHAR = 0x00B0.toChar()
+
     const val MAX_DAILY_FORECAST_DAYS = 7
+    const val EXPECTED_DAILY_FORECAST_DAYS = 6
 
     object WeatherConditionCodes {
         val Thunderstorm = 200..299

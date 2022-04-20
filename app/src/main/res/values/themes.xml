@@ -11,13 +11,9 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-    </style>
-
-    <style name="Background">
-        <item name="android:background">@drawable/background_gradient_day</item>
 
         <!-- Customize your theme here. -->
-
+        <item name="android:background">@drawable/day_gradient_color</item>
         <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
     </style>
 
@@ -26,6 +22,7 @@
     </style>
 
     <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="android:background">@android:color/transparent</item>
         <item name="colorPrimary">@android:color/transparent</item>
         <item name="colorPrimaryVariant">@android:color/transparent</item>
         <item name="colorOnPrimary">@color/white</item>

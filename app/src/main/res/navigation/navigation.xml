@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/splash_fragment">
 
     <fragment
         android:id="@+id/today_forecast_fragment"
-        android:name="com.endava.internship.mobile.weatherapp.ui.forecast.TodayForecastFragment"
+        android:name="com.endava.internship.mobile.weatherapp.ui.forecast.today.TodayForecastFragment"
         android:label="@string/todayForecastLabel"
         tools:layout="@layout/fragment_today_forecast" />
 
     <fragment
-        android:id="@+id/splashFragment"
+        android:id="@+id/splash_fragment"
         android:name="com.endava.internship.mobile.weatherapp.ui.splashscreen.SplashFragment"
         android:label="@string/splashScreenLabel"
         tools:layout="@layout/fragment_splash" >
@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/weekly_forecast_fragment"
-        android:name="com.endava.internship.mobile.weatherapp.ui.forecast.WeeklyForecastFragment"
+        android:name="com.endava.internship.mobile.weatherapp.ui.forecast.weekly.WeeklyForecastFragment"
         android:label="@string/weeklyForecastLabel"
         tools:layout="@layout/fragment_weekly_forecast" />
     <fragment

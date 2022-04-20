@@ -15,6 +15,7 @@
     <color name="background_blue_night_from">#07082B</color>
     <color name="background_blue_night_to">#23268D</color>
 
+    <color name="darkish_blue">#434579</color>
+    <color name="white_partial_transparent">#BFFFFFFF</color>
     <color name="yellow_sun">#FF9900</color>
-
 </resources>

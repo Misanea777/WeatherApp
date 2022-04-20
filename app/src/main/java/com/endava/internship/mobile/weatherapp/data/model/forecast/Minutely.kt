@@ -1,6 +1,9 @@
 package com.endava.internship.mobile.weatherapp.data.model.forecast
 
+import com.google.gson.annotations.SerializedName
+
 data class Minutely(
-    val dt: Long?,
-    val precipitation: Int?
+    @field:SerializedName("dt")
+    val dateTime: Long,
+    val precipitation: Int
 )
