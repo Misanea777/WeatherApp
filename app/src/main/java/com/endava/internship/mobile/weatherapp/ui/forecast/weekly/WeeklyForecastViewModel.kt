@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.data.repository.WeatherRepository
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.network.Resource
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.ui.forecast.weekly.DayForecast
+import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.utils.Event
 import com.endava.internship.mobile.weatherapp.utils.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -22,6 +23,9 @@ class WeeklyForecastViewModel @Inject constructor(
     private val _isLoading: MutableLiveData<Boolean> = MutableLiveData()
     val isLoading: LiveData<Boolean> = _isLoading
 
+    private val _statusMessage = MutableLiveData<Event<String>>()
+    val statusMessage : LiveData<Event<String>> = _statusMessage
+
     fun getDailyForecast() = viewModelScope.launch {
         _isLoading.value = true
         val response = repository.getDailyForecastFromLatLong(
@@ -32,6 +36,7 @@ class WeeklyForecastViewModel @Inject constructor(
             is Resource.Success ->
                 _forecast.value =
                     response.value.map { DayForecast(it.dateTime, it.temp.max, it.weather[0].id) }
+            is Resource.Failure -> _statusMessage.value = Event("Something went wrong!")
         }
         _isLoading.value = false
     }
