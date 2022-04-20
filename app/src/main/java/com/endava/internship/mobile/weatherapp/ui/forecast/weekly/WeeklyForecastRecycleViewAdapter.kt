@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.ui.forecast.weekly.DayForecast
 import com.endava.internship.mobile.weatherapp.databinding.ItemDailyForecastBinding
 
-
 class WeeklyForecastRecycleViewAdapter(var dataSet: Array<DayForecast>) :
     RecyclerView.Adapter<DayForecastViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DayForecastViewHolder {
