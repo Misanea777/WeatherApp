@@ -5,27 +5,18 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.StyleSpan
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.endava.internship.mobile.weatherapp.R
-import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.network.Resource
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.ui.forecast.adapter.HourlyForecastAdapter
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.utils.weatherIDToResourceID
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.viewmodels.TodayForecastViewModel
-import com.endava.internship.mobile.weatherapp.data.model.forecast.ForecastResponse
 import com.endava.internship.mobile.weatherapp.data.model.forecast.Hourly
 import com.endava.internship.mobile.weatherapp.databinding.FragmentTodayForecastBinding
-import com.endava.internship.mobile.weatherapp.utils.Constants
-import kotlinx.coroutines.launch
-import kotlin.math.roundToInt
 
 class TodayForecastFragment : Fragment() {
 
@@ -48,24 +39,34 @@ class TodayForecastFragment : Fragment() {
 
             lifecycleOwner = viewLifecycleOwner
 
-            viewTodayModel = sharedTodayViewModel
+            viewModel = sharedTodayViewModel
 
             todayFragment = this@TodayForecastFragment
         }
 
         sharedTodayViewModel.apply {
+            getTime()
             getCurrentWeather()
+            currentData.observe(viewLifecycleOwner) {
+                setIcon(it[3].toInt())
+                binding.weatherProgressBar.isVisible = isVisible.value == true
+            }
             getHourlyWeather()
             hourlyData.observe(viewLifecycleOwner) {
-                initHourlyAdapter(sharedTodayViewModel.hourlyData.value)
+                binding.weatherProgressBar.isVisible = isVisible.value == true
+                initHourlyAdapter(hourlyData.value)
             }
         }
+    }
+
+    private fun setIcon(id: Int) {
+        binding.sunImage.setImageResource(weatherIDToResourceID(id))
     }
 
     private fun initHourlyAdapter(hourlyData: List<Hourly>?) {
         binding.weatherForecastRecyclerView.apply {
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-            adapter = HourlyForecastAdapter(hourlyData)
+            adapter = HourlyForecastAdapter(hourlyData, context)
         }
     }
 

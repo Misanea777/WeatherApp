@@ -1,55 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui."
-    android:layout_width="@dimen/item_layout_width"
-    android:layout_height="@dimen/item_layout_height"
-    app:cardBackgroundColor="@android:color/transparent"
-    app:cardElevation="0dp"
-    android:layout_marginEnd="5dp"
-    >
+<layout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/item_hourly"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/rectangle_forecast"
-        >
+    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="@dimen/item_layout_width"
+        android:layout_height="@dimen/item_layout_height"
+        android:layout_marginEnd="5dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardElevation="0dp"
+        tools:context=".ui.">
 
-        <ImageView
-            android:id="@+id/cloudy_image"
-            android:layout_width="@dimen/cloudy_image_layout_width"
-            android:layout_height="@dimen/cloudy_image_layout_height"
-            android:layout_marginStart="@dimen/cloudy_image_margin_start"
-            android:layout_marginTop="@dimen/cloudy_image_margin_top"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_sunny"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/item_hourly"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rectangle_forecast">
 
-        <TextView
-            android:id="@+id/temp_value_list"
-            style="@style/TextViewStyleByWeatherDesign.Bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/temp_value_list_end"
-            android:textSize="@dimen/text_size_small"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cloudy_image"
-            tools:text="24°" />
+            <ImageView
+                android:id="@+id/cloudy_image"
+                android:layout_width="@dimen/cloudy_image_layout_width"
+                android:layout_height="@dimen/cloudy_image_layout_height"
+                android:layout_marginStart="@dimen/cloudy_image_margin_start"
+                android:layout_marginTop="@dimen/cloudy_image_margin_top"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_sunny"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/hour_text_list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
-            android:textColor="#BFFFFFFF"
-            android:textSize="@dimen/text_size_small"
-            app:layout_constraintEnd_toEndOf="@+id/temp_value_list"
-            app:layout_constraintTop_toBottomOf="@+id/temp_value_list"
-            tools:text="13:00" />
+            <TextView
+                android:id="@+id/temp_value_list"
+                style="@style/TextViewStyleByWeatherDesign.Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/temp_value_list_end"
+                android:textSize="@dimen/text_size_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cloudy_image"
+                tools:text="24°" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/hour_text_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:textColor="#BFFFFFFF"
+                android:textSize="@dimen/text_size_small"
+                app:layout_constraintEnd_toEndOf="@+id/temp_value_list"
+                app:layout_constraintTop_toBottomOf="@+id/temp_value_list"
+                tools:text="13:00" />
 
-</com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

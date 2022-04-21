@@ -28,7 +28,7 @@ data class Current(
     val sunset: Int?,
 
     @field:SerializedName("temp")
-    val temp: Double?,
+    var temp: Double?,
 
     @field:SerializedName("uvi")
     val uvi: Double?,

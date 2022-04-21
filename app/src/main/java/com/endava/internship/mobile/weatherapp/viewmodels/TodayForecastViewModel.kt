@@ -1,6 +1,5 @@
 package com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,52 +18,54 @@ import kotlin.math.roundToInt
 
 @HiltViewModel
 class TodayForecastViewModel @Inject constructor(
-    private var weatherRepository: WeatherRepository,
-    private var time: DateTime
+    private var weatherRepository: WeatherRepository
 ) : ViewModel() {
+
+    private val _isVisible = MutableLiveData<Boolean?>()
+    val isVisible: LiveData<Boolean?> = _isVisible
 
     val currentCity: String = getCityName()
 
-    val currentTime: String = getTime()
+    private val _currentTime = MutableLiveData<String>()
+    var currentTime: LiveData<String> = _currentTime
 
     val localDate: String = getDate()
-
-    private val _currentTemp = MutableLiveData<String>()
-    val currentTemp: LiveData<String> = _currentTemp
-
-    private val _currentWindSpeed = MutableLiveData<String>()
-    val currentWindSpeed: LiveData<String> = _currentWindSpeed
-
-    private val _currentHumidity = MutableLiveData<String>()
-    val currentHumidity: LiveData<String> = _currentHumidity
 
     private val _hourlyData = MutableLiveData<List<Hourly>>()
     val hourlyData: LiveData<List<Hourly>> = _hourlyData
 
+    private val _currentData = MutableLiveData<List<String>>()
+    val currentData: LiveData<List<String>> = _currentData
+
     fun getCurrentWeather() = viewModelScope.launch {
-
         val currentData = weatherRepository.getCurrentForecast((Constants.LAT_LONG_CHISINAU))
-
-        if (currentData is Resource.Success)
+        if (currentData is Resource.Success) {
             setCurrentWeather(currentData.value.current)
-        else
-            Log.e("state weather", "something doesn't work => check current method")
+            _isVisible.value = false
+        } else {
+            _isVisible.value = true
+        }
     }
 
     fun getHourlyWeather() = viewModelScope.launch {
-
         val hourlyData = weatherRepository.getHourlyForecast((Constants.LAT_LONG_CHISINAU))
-
-        if (hourlyData is Resource.Success)
+        if (hourlyData is Resource.Success) {
+            _isVisible.value = false
             setHourlyWeather(hourlyData.value)
-        else
-            Log.e("state weather", "something doesn't work => check hourly method")
+        } else {
+            _isVisible.value = true
+        }
     }
 
     private fun setCurrentWeather(currentTemp: Current?) {
-        _currentTemp.value = currentTemp?.temp?.roundToInt().toString()
-        _currentWindSpeed.value = currentTemp?.wind_speed?.roundToInt().toString()
-        _currentHumidity.value = currentTemp?.humidity?.toString()
+
+        // I saved just like that because otherwise I need change in model "val" to "var"
+        _currentData.value = listOf(
+            currentTemp?.temp?.roundToInt().toString(),
+            currentTemp?.wind_speed?.times(3.6)?.roundToInt().toString(),
+            currentTemp?.humidity.toString(),
+            currentTemp?.weather?.map { it.id }?.first().toString()
+        )
     }
 
     private fun setHourlyWeather(hourlyWeather: ForecastResponse) {
@@ -73,10 +74,12 @@ class TodayForecastViewModel @Inject constructor(
 
     private fun getCityName() = Constants.DEFAULT_CITY
 
-    private fun getTime(): String = time.toString("hh:mm")
+    fun getTime() {
+        _currentTime.value = DateTime().toString(Constants.TIME_PATTERN)
+    }
 
     private fun getDate(): String =
-        time.dayOfWeek().asText + ", " +
-                time.monthOfYear().asText + " " +
-                time.dayOfMonth.toString()
+        DateTime().dayOfWeek().asText + ", " +
+                DateTime().monthOfYear().asText + " " +
+                DateTime().dayOfMonth.toString()
 }
