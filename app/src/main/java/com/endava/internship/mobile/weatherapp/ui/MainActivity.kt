@@ -1,15 +1,8 @@
 package com.endava.internship.mobile.weatherapp.ui
 
-import android.Manifest
-import android.content.Context
 import android.content.pm.PackageManager
-import android.location.Location
-import android.location.LocationManager
 import android.os.Bundle
-import android.os.Looper
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
@@ -19,9 +12,7 @@ import com.endava.internship.mobile.weatherapp.R
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.data.local.LocationDataSource
 import com.endava.internship.mobile.weatherapp.databinding.ActivityMainBinding
 import com.endava.internship.mobile.weatherapp.utils.Constants
-import com.endava.internship.mobile.weatherapp.utils.LatLong
 import com.endava.internship.mobile.weatherapp.utils.Screens
-import com.google.android.gms.location.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDateTime
