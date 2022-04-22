@@ -43,4 +43,6 @@ object Constants {
     }
 
     const val MINIMUM_FETCH_INTERVAL : Long = 3600
+
+    const val PERMISSION_LOCATION_ID = 1010
 }
