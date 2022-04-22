@@ -18,14 +18,7 @@ class HourlyViewHolder(
 
     fun onBind(hourlyWeather: Hourly?) {
 
-        /*
-            * I get first because this map returns one value,
-            * for this I don't need to check for null
-         */
-        val id = hourlyWeather?.weather?.map { it.id }?.first()
-        /*
-            I don't do DI of time because when I made this the app is crash
-         */
+        val id = hourlyWeather?.weather?.map { it.id }?.get(0)
         val dt = DateTimeZone.getDefault()
         val newTime = DateTime(hourlyWeather?.dt?.times(1000), dt).toString(Constants.TIME_PATTERN)
 

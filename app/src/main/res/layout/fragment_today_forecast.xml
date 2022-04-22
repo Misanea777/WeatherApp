@@ -42,11 +42,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="101dp"
             android:layout_marginTop="@dimen/margin_top"
-            android:text="@{todayFragment.setSpannedTime(viewModel.currentTime)}"
             android:textSize="@dimen/text_size_big"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/city_text"
             app:layout_constraintTop_toTopOf="parent"
+            app:spanTimeText="@{viewModel.currentTime}"
             tools:text="12:00" />
 
         <TextView
@@ -69,6 +69,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:setIcon="@{viewModel.imageIcon}"
             tools:src="@drawable/ic_thunder" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -187,6 +188,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
+            app:isVisible="@{viewModel.isVisible}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
