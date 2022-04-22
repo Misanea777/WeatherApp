@@ -1,7 +1,7 @@
 package com.endava.internship.mobile.weatherapp.utils
 
 import com.endava.internship.mobile.weatherapp.BuildConfig
-import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.utils.LatLong
+
 
 object Constants {
     const val WEATHER_API_QUERY_APP_ID: String = "appid"
@@ -25,9 +25,29 @@ object Constants {
 
     val LAT_LONG_CHISINAU = LatLong(47.0105, 28.8638)
 
+    val DAY_HOURS_RANGE = 7..18
+
+    const val DEGREE_CHAR = 0x00B0.toChar()
+
     const val MAX_DAILY_FORECAST_DAYS = 7
 
     const val DEFAULT_CITY = "Chisinau"
 
     const val TIME_PATTERN = "HH:mm"
+
+
+    const val EXPECTED_DAILY_FORECAST_DAYS = 6
+
+    object WeatherConditionCodes {
+        val Thunderstorm = 200..299
+        val  Drizzle = 300..399
+        val Rain = 500..599
+        val Snow = 600..699
+        val Atmosphere = 700..799
+        const val Clear = 800
+        val Clouds = 801..Int.MAX_VALUE
+    }
+
+    const val MINIMUM_FETCH_INTERVAL : Long = 3600
 }
+

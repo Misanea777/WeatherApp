@@ -3,10 +3,10 @@ package com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.wea
 import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 import com.endava.internship.mobile.weatherapp.R
-import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.utils.weatherIDToResourceID
 import com.endava.internship.mobile.weatherapp.data.model.forecast.Hourly
 import com.endava.internship.mobile.weatherapp.databinding.ItemHourlyForecastBinding
 import com.endava.internship.mobile.weatherapp.utils.Constants
+import com.endava.internship.mobile.weatherapp.utils.weatherIDToResourceID
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import kotlin.math.roundToInt
@@ -20,7 +20,7 @@ class HourlyViewHolder(
 
         val id = hourlyWeather?.weather?.map { it.id }?.get(0)
         val dt = DateTimeZone.getDefault()
-        val newTime = DateTime(hourlyWeather?.dt?.times(1000), dt).toString(Constants.TIME_PATTERN)
+        val newTime = DateTime(hourlyWeather?.dateTime?.times(1000), dt).toString(Constants.TIME_PATTERN)
 
         binding.cloudyImage.setImageResource(weatherIDToResourceID(id))
         binding.tempValueList.text =

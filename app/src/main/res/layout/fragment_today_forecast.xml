@@ -19,8 +19,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/day_gradient_color"
-        tools:context=".ui.forecast.TodayForecastFragment">
+        tools:context=".ui.forecast.today.TodayForecastFragment">
 
         <TextView
             android:id="@+id/city_text"

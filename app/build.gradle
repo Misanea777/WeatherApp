@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id "org.jetbrains.kotlin.kapt"
+    id 'com.google.gms.google-services'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
 }
@@ -25,10 +26,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
+        coreLibraryDesugaringEnabled true
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -43,17 +47,17 @@ android {
     }
 }
 
-
-
 dependencies {
 
     //App dependencies
     implementation "androidx.core:core-ktx:$core_ktx_version"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "com.google.android.material:material:$material_version"
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
 
     //Database management
     implementation "androidx.room:room-runtime:$room_version"
+    implementation 'com.google.firebase:firebase-common-ktx:20.1.0'
     annotationProcessor "androidx.room:room-compiler:$room_version"
 
     //Navigation
@@ -89,5 +93,9 @@ dependencies {
 
     //joda-time
     implementation 'joda-time:joda-time:2.10.14'
-    
+
+    //Firebase
+    implementation platform("com.google.firebase:firebase-bom:$firebase_bom")
+    implementation "com.google.firebase:firebase-config-ktx:$firebase_config_ktx"
+
 }
