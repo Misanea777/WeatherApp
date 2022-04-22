@@ -43,10 +43,10 @@ class TodayForecastViewModel @Inject constructor(
     fun getCurrentWeather() = viewModelScope.launch {
         setTime(getDefaultTime())
         _isVisible.value = true
-        val currentData = weatherRepository.getCurrentForecast((Constants.LAT_LONG_CHISINAU))
+        val currentData = weatherRepository.getCurrentForecastFromLatLong((Constants.LAT_LONG_CHISINAU))
         if (currentData is Resource.Success) {
             setCurrentWeather(currentData.value.current)
-            setTime(currentData.value.current?.dt)
+            setTime(currentData.value.current?.dateTime)
             setImage(currentData.value.current)
         }
         _isVisible.value = false
@@ -54,7 +54,7 @@ class TodayForecastViewModel @Inject constructor(
 
     fun getHourlyWeather() = viewModelScope.launch {
         _isVisible.value = true
-        val hourlyData = weatherRepository.getHourlyForecast((Constants.LAT_LONG_CHISINAU))
+        val hourlyData = weatherRepository.getHourlyForecastFromLatLong((Constants.LAT_LONG_CHISINAU))
         if (hourlyData is Resource.Success) setHourlyWeather(hourlyData.value)
         _isVisible.value = false
     }
@@ -66,7 +66,7 @@ class TodayForecastViewModel @Inject constructor(
     private fun setCurrentWeather(currentTemp: Current?) {
         _currentData.value = listOf(
             currentTemp?.temp?.roundToInt().toString(),
-            currentTemp?.wind_speed?.times(3.6)?.roundToInt().toString(),
+            currentTemp?.windSpeed?.times(3.6)?.roundToInt().toString(),
             currentTemp?.humidity.toString()
         )
     }

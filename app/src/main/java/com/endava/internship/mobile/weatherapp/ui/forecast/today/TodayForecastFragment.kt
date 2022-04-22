@@ -34,8 +34,6 @@ class TodayForecastFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
 
             viewModel = sharedTodayViewModel
-
-            todayFragment = this@TodayForecastFragment
         }
 
         sharedTodayViewModel.apply {

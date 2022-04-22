@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import com.endava.internship.mobile.weatherapp.utils.weatherIDToResourceID
 
 object BindingAdapters {
 

@@ -9,10 +9,6 @@
         <variable
             name="viewModel"
             type="com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.viewmodels.TodayForecastViewModel" />
-
-        <variable
-            name="todayFragment"
-            type="com.endava.internship.mobile.weatherapp.ui.forecast.TodayForecastFragment" />
     </data>
 
 
