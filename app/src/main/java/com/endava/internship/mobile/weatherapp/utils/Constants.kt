@@ -43,7 +43,4 @@ object Constants {
     }
 
     const val MINIMUM_FETCH_INTERVAL : Long = 3600
-
-    const val EMAIL_ERR = "Email not valid"
-    const val PASSWORD_ERR = "Password length must be at least 6 characters"
 }

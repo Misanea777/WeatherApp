@@ -1,17 +1,20 @@
 package com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.ui.auth.sign_up
 
+import android.content.Context
 import androidx.lifecycle.*
+import com.endava.internship.mobile.weatherapp.R
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.data.local.preferences.user.UserPreferences
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.utils.validators.LiveDataValidatorResolver
-import com.endava.internship.mobile.weatherapp.utils.Constants
 import com.endava.internship.mobile.weatherapp.utils.isValidEmail
 import com.endava.internship.mobile.weatherapp.utils.validators.LiveDataValidator
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class SignUpViewModel @Inject constructor(
+    @ApplicationContext context: Context,
     private val preferences: UserPreferences
 ) : ViewModel() {
     private val _isCreated: MutableLiveData<Boolean> = MutableLiveData()
@@ -19,12 +22,12 @@ class SignUpViewModel @Inject constructor(
 
     val email = MutableLiveData<String>()
     val emailValidator = LiveDataValidator(email).apply {
-        addRule(Constants.EMAIL_ERR) { it?.isValidEmail() ?: false }
+        addRule(context.getString(R.string.email_err)) { it?.isValidEmail() ?: false }
     }
 
     val password = MutableLiveData<String>()
     val passwordValidator = LiveDataValidator(password).apply {
-        addRule(Constants.PASSWORD_ERR) { if (it == null) false else it.length >= 6 }
+        addRule(context.getString(R.string.password_err)) { if (it == null) false else it.length >= 6 }
     }
 
     val isSignUpFormValidMediator = MediatorLiveData<Boolean>()
