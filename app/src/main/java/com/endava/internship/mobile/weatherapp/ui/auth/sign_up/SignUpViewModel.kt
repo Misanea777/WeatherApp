@@ -30,6 +30,11 @@ class SignUpViewModel @Inject constructor(
         addRule(context.getString(R.string.password_err)) { if (it == null) false else it.length >= 6 }
     }
 
+    val confirmPassword = MutableLiveData<String>()
+    val confirmPasswordValidator = LiveDataValidator(confirmPassword).apply {
+        addRule(context.getString(R.string.confirm_password_err)) { if (it == null) false else it == password.value }
+    }
+
     val isSignUpFormValidMediator = MediatorLiveData<Boolean>()
 
     init {
@@ -37,13 +42,19 @@ class SignUpViewModel @Inject constructor(
         isSignUpFormValidMediator.value = false
         isSignUpFormValidMediator.addSource(email) { validateForm(isEmailChanged = true) }
         isSignUpFormValidMediator.addSource(password) { validateForm(isPasswordChanged = true) }
+        isSignUpFormValidMediator.addSource(confirmPassword) {validateForm(isConfirmPasswordChanged = true)}
     }
 
     private fun validateForm(
         isEmailChanged: Boolean = false,
-        isPasswordChanged: Boolean = false
+        isPasswordChanged: Boolean = false,
+        isConfirmPasswordChanged: Boolean = false
     ) {
-        val validators = listOf(Pair(emailValidator, isEmailChanged), Pair(passwordValidator, isPasswordChanged))
+        val validators = listOf(
+            Pair(emailValidator, isEmailChanged),
+            Pair(passwordValidator, isPasswordChanged),
+            Pair(confirmPasswordValidator, isConfirmPasswordChanged)
+        )
         val validatorResolver = LiveDataValidatorResolver(validators)
         isSignUpFormValidMediator.value = validatorResolver.isValid()
     }
@@ -52,7 +63,7 @@ class SignUpViewModel @Inject constructor(
         val emailString = email.value
         val passwordString = password.value
 
-        if(emailString != null && passwordString != null) {
+        if (emailString != null && passwordString != null) {
             preferences.saveEmail(emailString)
             preferences.savePassword(passwordString)
             _isCreated.value = true

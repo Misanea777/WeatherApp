@@ -17,4 +17,6 @@
     <string name="login">Login</string>
     <string name="email_err">Email not valid</string>
     <string name="password_err">Password length must be at least 6 characters</string>
+    <string name="confirm_password_err">Does not match password</string>
+    <string name="confirm_password">Confirm password</string>
 </resources>
