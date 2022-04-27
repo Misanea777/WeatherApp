@@ -1,6 +1,7 @@
 package com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.data.repository
 
 import com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.network.Resource
+
 import com.endava.internship.mobile.weatherapp.data.model.forecast.Daily
 import com.endava.internship.mobile.weatherapp.data.model.forecast.ForecastResponse
 import com.endava.internship.mobile.weatherapp.utils.Constants
@@ -13,4 +14,6 @@ interface WeatherRepository {
     ): Resource<List<Daily>>
 
     suspend fun getHourlyForecastFromLatLong(latLong: LatLong): Resource<ForecastResponse>
+
+    suspend fun getCurrentForecastFromLatLong(latLong: LatLong): Resource<ForecastResponse>
 }

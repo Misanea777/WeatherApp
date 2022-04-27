@@ -9,7 +9,7 @@ import java.util.regex.Pattern
 
 fun itemsString(items: List<String>) = items.joinToString(separator = ",")
 
-fun weatherIDToResourceID(id: Int): Int {
+fun weatherIDToResourceID(id: Int?): Int {
     return when(id) {
         in Constants.WeatherConditionCodes.Thunderstorm -> R.drawable.ic_thunder
         in Constants.WeatherConditionCodes.Drizzle -> R.drawable.ic_shower

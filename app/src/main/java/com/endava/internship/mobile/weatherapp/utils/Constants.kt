@@ -30,6 +30,12 @@ object Constants {
     const val DEGREE_CHAR = 0x00B0.toChar()
 
     const val MAX_DAILY_FORECAST_DAYS = 7
+
+    const val DEFAULT_CITY = "Chisinau"
+
+    const val TIME_PATTERN = "HH:mm"
+
+
     const val EXPECTED_DAILY_FORECAST_DAYS = 6
 
     object WeatherConditionCodes {
@@ -43,4 +49,7 @@ object Constants {
     }
 
     const val MINIMUM_FETCH_INTERVAL : Long = 3600
+
+    const val MAX_LOCATION_RESULTS = 3
 }
+
