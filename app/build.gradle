@@ -91,6 +91,9 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$ext_hilt_version"
     kapt "com.google.dagger:hilt-compiler:$ext_hilt_version"
 
+    //joda-time
+    implementation 'joda-time:joda-time:2.10.14'
+
     //Firebase
     implementation platform("com.google.firebase:firebase-bom:$firebase_bom")
     implementation "com.google.firebase:firebase-config-ktx:$firebase_config_ktx"

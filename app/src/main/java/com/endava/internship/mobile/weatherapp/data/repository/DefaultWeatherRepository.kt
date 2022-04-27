@@ -14,8 +14,8 @@ import kotlinx.coroutines.CoroutineDispatcher
 class DefaultWeatherRepository(
     private val api: WeatherApi,
     private  val ioDispatcher: CoroutineDispatcher
-) : WeatherRepository {
-    override suspend fun getDailyForecastFromLatLong(
+) : WeatherRepository  {
+     override suspend fun getDailyForecastFromLatLong(
         latLong: LatLong,
         days: Int
     ): Resource<List<Daily>> =
@@ -42,6 +42,20 @@ class DefaultWeatherRepository(
                         Constants.WEATHER_API_QUERY_FIELD_MINUTELY,
                         Constants.WEATHER_API_QUERY_FIELD_ALERTS,
                         Constants.WEATHER_API_QUERY_FIELD_DAILY
+                    )
+                ),
+            )
+        }
+
+    override suspend fun getCurrentForecastFromLatLong(latLong: LatLong): Resource<ForecastResponse> =
+        safeApiCall(dispatcher = ioDispatcher) {
+            api.getWeatherDataFromLatLong(
+                lat = latLong.lat, long = latLong.long,
+                excludeFields = ExcludeList(
+                    listOf(
+                        Constants.WEATHER_API_QUERY_FIELD_MINUTELY,
+                        Constants.WEATHER_API_QUERY_FIELD_ALERTS,
+                        Constants.WEATHER_API_QUERY_FIELD_HOURLY
                     )
                 ),
             )
