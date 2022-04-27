@@ -46,10 +46,13 @@ class SignUpViewModel @Inject constructor(
     }
 
     fun signUpUser() = viewModelScope.launch {
-        preferences.saveEmail(email.value!!)
-        preferences.savePassword(password.value!!)
-        _isCreated.value = true
+        val emailString = email.value
+        val passwordString = password.value
+
+        if(emailString != null && passwordString != null) {
+            preferences.saveEmail(emailString)
+            preferences.savePassword(passwordString)
+            _isCreated.value = true
+        }
     }
-
-
 }

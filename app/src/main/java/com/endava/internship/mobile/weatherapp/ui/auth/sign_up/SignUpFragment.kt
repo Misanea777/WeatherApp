@@ -35,9 +35,6 @@ class SignUpFragment : Fragment() {
         signUpViewModel.isCreated.observe(viewLifecycleOwner) { isCreated ->
             if (isCreated) findNavController().navigate(R.id.action_sign_up_fragment_to_splash_fragment)
         }
-        binding.signUpButton.setOnClickListener {
-            signUpViewModel.signUpUser()
-        }
 
         binding.backToLoginButton.setOnClickListener{
             findNavController().navigate(R.id.action_sign_up_fragment_to_login_fragment)
