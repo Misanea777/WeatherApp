@@ -1,8 +1,11 @@
 package com.endava.internship.mobile.weatherapp.utils
 
+import android.text.TextUtils
+import android.util.Patterns
 import com.endava.internship.mobile.weatherapp.R
 import com.endava.internship.mobile.weatherapp.utils.Constants
 import java.util.*
+import java.util.regex.Pattern
 
 fun itemsString(items: List<String>) = items.joinToString(separator = ",")
 
@@ -22,3 +25,8 @@ fun String.capitalize() : String {
         .lowercase(Locale.getDefault())
         .replaceFirstChar { it.uppercase()}
 }
+
+fun String.isValidEmail() =
+    !TextUtils.isEmpty(this) && Patterns.EMAIL_ADDRESS.matcher(this).matches()
+
+fun String.isValidPassword() = Pattern.matches("^.{6,}$", this)

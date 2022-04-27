@@ -6,5 +6,13 @@
     <string name="splashScreenLabel">fragment_splash</string>
     <string name="todayForecastLabel">fragment_today_forecast</string>
     <string name="weeklyForecastLabel">fragment_weekly_forecast</string>
+    <string name="signUpLabel">fragment_sign_up</string>
+    <string name="loginLabel">fragment_login</string>
     <string name="settingsFragmentLabel">settings_fragment</string>
+    <string name="sign_up">Sign up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="back_to_login">Back to login</string>
+    <string name="dont_have_an_account">Don\'t have an account?</string>
+    <string name="login">Login</string>
 </resources>

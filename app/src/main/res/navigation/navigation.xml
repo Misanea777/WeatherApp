@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/splash_fragment">
+    app:startDestination="@id/login_fragment">
 
     <fragment
         android:id="@+id/today_forecast_fragment"
@@ -33,4 +33,28 @@
         android:name="com.endava.internship.mobile.weatherapp.ui.settings.SettingsFragment"
         android:label="@string/settingsFragmentLabel"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/login_fragment"
+        android:name="com.endava.internship.mobile.weatherapp.ui.auth.log_in.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_fragment_to_splash_fragment"
+            app:destination="@id/splash_fragment" />
+        <action
+            android:id="@+id/action_login_fragment_to_sign_up_fragment"
+            app:destination="@id/sign_up_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sign_up_fragment"
+        android:name="com.endava.internship.mobile.weatherapp.com.endava.internship.mobile.weatherapp.ui.auth.sign_up.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_sign_up_fragment_to_splash_fragment"
+            app:destination="@id/splash_fragment" />
+        <action
+            android:id="@+id/action_sign_up_fragment_to_login_fragment"
+            app:destination="@id/login_fragment" />
+    </fragment>
 </navigation>

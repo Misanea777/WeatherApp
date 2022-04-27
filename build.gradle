@@ -40,5 +40,8 @@ ext {
     ext_hilt_version = "2.41"
     firebase_bom = "29.3.0"
     firebase_config_ktx = "21.0.2"
+    firebase_common_ktx = "20.1.0"
+    data_store = "1.0.0"
+    datastore_preferences = "1.0.0"
 
 }

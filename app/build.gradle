@@ -53,12 +53,16 @@ dependencies {
     implementation "androidx.core:core-ktx:$core_ktx_version"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "com.google.android.material:material:$material_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
 
     //Database management
     implementation "androidx.room:room-runtime:$room_version"
-    implementation 'com.google.firebase:firebase-common-ktx:20.1.0'
+    implementation "com.google.firebase:firebase-common-ktx:$firebase_common_ktx"
     annotationProcessor "androidx.room:room-compiler:$room_version"
+    implementation "androidx.datastore:datastore:$data_store"
+    implementation "androidx.datastore:datastore-preferences:$datastore_preferences"
+
 
     //Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
