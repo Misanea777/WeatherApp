@@ -8,13 +8,13 @@
     <fragment
         android:id="@+id/today_forecast_fragment"
         android:name="com.endava.internship.mobile.weatherapp.ui.forecast.today.TodayForecastFragment"
-        android:label="@string/todayForecastLabel"
+        android:label="@string/today_forecast_fragment_label"
         tools:layout="@layout/fragment_today_forecast" />
 
     <fragment
         android:id="@+id/splash_fragment"
         android:name="com.endava.internship.mobile.weatherapp.ui.splashscreen.SplashFragment"
-        android:label="@string/splashScreenLabel"
+        android:label="@string/splash_fragment_label"
         tools:layout="@layout/fragment_splash" >
 
         <action
@@ -26,12 +26,12 @@
     <fragment
         android:id="@+id/weekly_forecast_fragment"
         android:name="com.endava.internship.mobile.weatherapp.ui.forecast.weekly.WeeklyForecastFragment"
-        android:label="@string/weeklyForecastLabel"
+        android:label="@string/weekly_forecast_fragment_label"
         tools:layout="@layout/fragment_weekly_forecast" />
     <fragment
         android:id="@+id/settings_fragment"
         android:name="com.endava.internship.mobile.weatherapp.ui.settings.SettingsFragment"
-        android:label="@string/settingsFragmentLabel"
+        android:label="@string/settings_fragment_label"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/login_fragment"

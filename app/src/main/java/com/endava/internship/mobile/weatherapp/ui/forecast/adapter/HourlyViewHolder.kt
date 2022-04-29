@@ -24,7 +24,7 @@ class HourlyViewHolder(
 
         binding.cloudyImage.setImageResource(weatherIDToResourceID(id))
         binding.tempValueList.text =
-            context.getString(R.string.temp_value, hourlyWeather?.temp?.roundToInt().toString())
+            context.getString(R.string.today_forecast_temp_value, hourlyWeather?.temp?.roundToInt().toString())
         binding.hourTextList.text = newTime
     }
 }

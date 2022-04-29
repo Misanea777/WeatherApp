@@ -22,17 +22,23 @@ class SignUpViewModel @Inject constructor(
 
     val email = MutableLiveData<String>()
     val emailValidator = LiveDataValidator(email).apply {
-        addRule(context.getString(R.string.email_err)) { it?.isValidEmail() ?: false }
+        addRule(context.getString(R.string.auth_sign_up_email_error)) {
+            it?.isValidEmail() ?: false
+        }
     }
 
     val password = MutableLiveData<String>()
     val passwordValidator = LiveDataValidator(password).apply {
-        addRule(context.getString(R.string.password_err)) { if (it == null) false else it.length >= 6 }
+        addRule(context.getString(R.string.auth_sign_up_password_error)) {
+            if (it == null) false else it.length >= 6
+        }
     }
 
     val confirmPassword = MutableLiveData<String>()
     val confirmPasswordValidator = LiveDataValidator(confirmPassword).apply {
-        addRule(context.getString(R.string.confirm_password_err)) { if (it == null) false else it == password.value }
+        addRule(context.getString(R.string.auth_sign_up_confirm_password_error)) {
+            if (it == null) false else it == password.value
+        }
     }
 
     val isSignUpFormValidMediator = MediatorLiveData<Boolean>()
@@ -42,7 +48,7 @@ class SignUpViewModel @Inject constructor(
         isSignUpFormValidMediator.value = false
         isSignUpFormValidMediator.addSource(email) { validateForm(isEmailChanged = true) }
         isSignUpFormValidMediator.addSource(password) { validateForm(isPasswordChanged = true) }
-        isSignUpFormValidMediator.addSource(confirmPassword) {validateForm(isConfirmPasswordChanged = true)}
+        isSignUpFormValidMediator.addSource(confirmPassword) { validateForm(isConfirmPasswordChanged = true) }
     }
 
     private fun validateForm(

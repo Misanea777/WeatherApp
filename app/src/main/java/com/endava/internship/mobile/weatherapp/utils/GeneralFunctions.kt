@@ -27,6 +27,6 @@ fun String.capitalize() : String {
 }
 
 fun String.isValidEmail() =
-    !TextUtils.isEmpty(this) && Patterns.EMAIL_ADDRESS.matcher(this).matches()
+    Patterns.EMAIL_ADDRESS.matcher(this).matches()
 
 fun String.isValidPassword() = Pattern.matches("^.{6,}$", this)
