@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:fontFamily="@font/sf_pro_text"
-            android:text="@string/weekly_forecast"
+            android:text="@string/weekly_forecast_title"
             android:textColor="@color/white"
             android:layout_marginHorizontal="@dimen/default_margin"
             android:layout_marginTop="@dimen/default_margin"

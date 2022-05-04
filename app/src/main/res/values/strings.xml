@@ -1,23 +1,33 @@
 <resources>
     <string name="app_name">Weather App</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="calendar">calendar</string>
-    <string name="home">home</string>
-    <string name="settings">settings</string>
-    <string name="hourly_forecast">Hourly forecast</string>
-    <string name="wind">Wind</string>
-    <string name="temp">Temp</string>
-    <string name="humidity">Humidity</string>
-    <string name="temp_value">%s°</string>
-    <string name="wind_value">%skm/h</string>
-    <string name="humidity_value">%s%%</string>
 
-    <string name="weekly_forecast">Weekly Forecast</string>
-    <string name="logo">logo</string>
-    <string name="splashScreenLabel">fragment_splash</string>
-    <string name="todayForecastLabel">fragment_today_forecast</string>
-    <string name="weeklyForecastLabel">fragment_weekly_forecast</string>
-    <string name="settingsFragmentLabel">settings_fragment</string>
+    <string name="today_forecast_hourly_forecast_text">Hourly forecast</string>
+    <string name="today_forecast_wind_text">Wind</string>
+    <string name="today_forecast_temp_text">Temp</string>
+    <string name="today_forecast_humidity_text">Humidity</string>
+    <string name="today_forecast_temp_value">%s°</string>
+    <string name="today_forecast_wind_value">%skm/h</string>
+    <string name="today_forecast_humidity_value">%s%%</string>
 
+    <string name="weekly_forecast_title">Weekly Forecast</string>
+    <string name="splash_logo_hint">logo</string>
+    <string name="splash_fragment_label">fragment_splash</string>
+    <string name="today_forecast_fragment_label">fragment_today_forecast</string>
+    <string name="weekly_forecast_fragment_label">fragment_weekly_forecast</string>
+    <string name="sign_up_fragment_label">fragment_sign_up</string>
+    <string name="login_fragment_label">fragment_login</string>
+    <string name="settings_fragment_label">settings_fragment</string>
+
+    <string name="auth_sign_up_title">Sign up</string>
+    <string name="auth_sign_up_button">Sign up</string>
+    <string name="auth_sign_up_email_hint">Email</string>
+    <string name="auth_sign_up_password_hint">Password</string>
+    <string name="auth_sign_up_back_to_login_button">Back to login</string>
+    <string name="auth_sign_up_confirm_password_hint">Confirm password</string>
+    <string name="auth_login_create_account_button">Don\'t have an account?</string>
+    <string name="auth_login_button">Login</string>
+    <string name="auth_sign_up_email_error">Email not valid</string>
+    <string name="auth_sign_up_password_error">Password length must be at least 6 characters</string>
+    <string name="auth_sign_up_confirm_password_error">Does not match password</string>
 </resources>
